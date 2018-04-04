@@ -1,0 +1,31 @@
+.Header {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.025);
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6eb;
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+  width: 100%;
+  align-items: center;
+}
+
+.Logo {
+  margin: 0px 40px;
+  padding: 0px 15px;
+}
+
+.SignInNavBar{
+  display: flex;
+  align-items: right;
+  width: 400px;
+  margin-right: 50px;
+  margin-left: 200px;
+  justify-content: space-between;
+}
+
+.SessionButton {
+  border-radius: 1px;
+  font-size: 11px;
+  padding: 12px 40px;
+  border: 1px solid #cccccc;
+}

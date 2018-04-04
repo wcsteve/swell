@@ -52,6 +52,8 @@ group :development do
   gem 'annotate'
   gem 'bcrypt'
   gem 'jquery-rails'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'guard'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

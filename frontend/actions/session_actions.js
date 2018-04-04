@@ -19,7 +19,7 @@ export const signin = (user) => (dispatch) => (
 );
 
 export const logout = () => (dispatch) => (
-  ApiUtil.logout(user).then((user) => dispatch(receiveCurrentUser(user))),
+  ApiUtil.logout().then(() => dispatch(receiveCurrentUser(null))),
   (error) => dispatch(receiveErrors(error.responseJSON))
 );
 

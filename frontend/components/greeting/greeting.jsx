@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 const sessionLinks = () => (
-  <nav>
-    <NavLink to='/signup'>Sign Up</NavLink>
-    <NavLink to='/login'>Login</NavLink>
-    <NavLink to='/login'>Demo</NavLink>
+  <nav className="SignInNavBar">
+    <NavLink className="SessionButton" to='/signup'>Sign Up</NavLink>
+    <NavLink className="SessionButton" to='/signin'>Sign In</NavLink>
+    <NavLink className="SessionButton" to='/signin'>Demo</NavLink>
   </nav>
 )
 

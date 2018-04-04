@@ -3,11 +3,12 @@ import { logout } from '../../actions/session_actions';
 import Greeting from './greeting'
 
 const mapStateToProps = (state) => ({
-  currentUser: state.currentUser
+  currentUser: state.session.currentUser
+  // currentUser: {username: "Woody2", password: "password"}
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout)
+  logout: () => dispatch(logout())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Greeting)
