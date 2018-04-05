@@ -10,11 +10,14 @@ const sessionLinks = () => (
   </nav>
 )
 
-
 const personalGreeting = (currentUser, logout) => (
-  <div>
+  <div className="SignInNavBar">
     <h2>{currentUser.username}</h2>
-    <button type="button" onClick={logout}>Log Out</button>
+    <button
+      className="SessionButton"
+      type="button"
+      onClick={logout}>Log Out
+    </button>
   </div>
 )
 

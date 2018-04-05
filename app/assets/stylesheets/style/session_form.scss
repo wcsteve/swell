@@ -1,4 +1,4 @@
-.SessionForm{
+.sessionform{
   z-index: 1000;
   // border: 1px solid #e6e6eb;
   position: relative;
@@ -7,55 +7,78 @@
   height: 600px;
   top: 40px;
   background: rgba(0,0,0,0.75);
-  border: 1px solid #e6e6eb;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.Session-Form-Input {
-  font-size: 14px;
-  min-height: 40px;
+.session-form-input {
+  height: 17px;
   padding: 12px 10px;
-  background: rgba(0,0,0,0.5);
   margin: 6px 0;
-  border: 1px solid #666;
-  color: #CDCDCD;
+  justify-content: space-around;
+  width: 300px;
+  font-size: 20px;
+  border-radius: 3px;
 }
 
-.Session-Welcome {
+.user-input{
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #666;
+  color: #CDCDCD;
+  margin: 10px 0px;
+}
+
+.session-link{
+  text-align: center;
+  color: #fff;
+  background-color: #fc4c02;
+  border-color: #fc4c02;
+  align-content: center;
+  margin-top: 20px;
+  font-size: 16px;
+
+}
+
+.demo-link {
+  text-align: center;
+  color: #fff;
+  background-color: #2C5C94;
+  border-color: #2C5C94;
+  align-content: center;
+  margin: 5px 0px;
+  font-size: 16px;
+
+}
+.session-welcome {
   background: rgba(0,0,0,0.5);
   border-radius: 3px;
-  border: 1px solid #e6e6eb;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: box-sizing;
 
-  h2, h3 {
-    color: #ECECEC;
-    font-weight: 300;
+  h2 {
+    padding: 30px 20px;
+    color: #EEEEEE;
+    font-weight: 200;
     font-size: 30px;
     margin-top: 10px;
-  }
-
-  h3{
-    font-size: 20px;
-  }
-
-  h2 {
-    font-weight: 400;
+    font-weight: 250;
   }
 }
 
-.Session-Fieldset {
-  height: 500px;
-  width: 100%;
+.session-fieldset {
+  height: 300px;
+  width: auto;
   display: flex;
   flex-direction: column;
+  text-align: left;
+  padding-top: 75px;
 
-  label, input {
-    justify-content: space-around;
+  input::placeholder {
+  font-size: 18px;
   }
+
 }

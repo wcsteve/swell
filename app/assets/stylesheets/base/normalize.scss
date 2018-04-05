@@ -35,6 +35,10 @@ img {
   height: auto;
 }
 
+::-moz-placeholder {
+  font-size: 200;
+}
+
 input[type="password"],
 input[type="email"],
 input[type="text"],
