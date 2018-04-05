@@ -6,6 +6,10 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token, :ensure_icon_img_url
   attr_reader :password
 
+  has_many :routes,
+    foreign_key: :user_id,
+    class_name: :Route
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

@@ -1,22 +1,20 @@
 class CreateRoutes < ActiveRecord::Migration[5.1]
   def change
     create_table :routes do |t|
-      t.integer :user_id
-      t.string :title
-      t.text :description
-      t.float :start_lat
-      t.float :start_lng
-      t.float :end_lat
-      t.float :end_lng
-      t.float :distance
-      t.string :distance_unit
-      t.string :duration
-      t.string :elevation_gain
-      t.string :elevation_unit
-      t.boolean :private
-      t.text :mapped_route
+      t.integer :user_id, null: false
+      t.string :title, null: false
+      t.text :description, null: false
+      t.float :distance, null: false
+      t.string :distance_unit, null: false, default: "miles"
+      t.string :duration, null: false
+      t.string :elevation_gain, null: false
+      t.string :elevation_unit, null: false
+      t.text :polyline, null: false
 
       t.timestamps
     end
+
+    add_index :routes, :user_id
+    add_index :routes, [:user_id, :title], unique: true
   end
 end
