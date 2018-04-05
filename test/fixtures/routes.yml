@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  description: MyText
+  start_lat: 1.5
+  start_lng: 1.5
+  end_lat: 1.5
+  end_lng: 1.5
+  distance: 1.5
+  distance_unit: MyString
+  duration: MyString
+  elevation_gain: MyString
+  elevation_unit: MyString
+  private: false
+  mapped_route: MyText
+
+two:
+  user_id: 1
+  title: MyString
+  description: MyText
+  start_lat: 1.5
+  start_lng: 1.5
+  end_lat: 1.5
+  end_lng: 1.5
+  distance: 1.5
+  distance_unit: MyString
+  duration: MyString
+  elevation_gain: MyString
+  elevation_unit: MyString
+  private: false
+  mapped_route: MyText
