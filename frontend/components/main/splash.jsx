@@ -5,13 +5,13 @@ import SignInFormContainer from '../signin/signin_form_container';
 
 
 const HomePage = () => (
-  <div className="splash-header">
-    <h1>
-      The App for Fitness Enthusiasts
-      <br/>
-      It's Time to Get Swell
-    </h1>
-  </div>
+    <div className="splash-header">
+      <h1>
+        The App for Fitness Enthusiasts
+        <br/>
+        It's Time to Get Swell
+      </h1>
+    </div>
 )
 
 const Splash = () => (
