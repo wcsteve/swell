@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {signup, signin, logout} from './actions/session_actions';
+import {fetchRoutes, fetchRoute, createRoute, updateRoute, deleteRoute} from './util/route_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -14,8 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.signin = signin;
-  window.logout = logout;
+  window.fetchRoutes = fetchRoutes;
+  window.fetchRoute = fetchRoute;
+  window.createRoute = createRoute;
+  window.updateRoute = updateRoute;
+  window.deleteRoute = deleteRoute;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   ReactDOM.render(<Root store={ store } />, root);

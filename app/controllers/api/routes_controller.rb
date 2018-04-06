@@ -1,7 +1,7 @@
 class Api::RoutesController < ApplicationController
 
   def index
-    @routes = Route.where(user_id: params[:id])
+    @routes = Route.where(user_id: params[:userId])
     if @routes
       render :index
     else
@@ -21,16 +21,16 @@ class Api::RoutesController < ApplicationController
   def create
     @route = Route.new(route_params)
     if @route.save
-      redirect_to api_route(@route)
+      redirect_to api_route_url(@route)
     else
       render json: @route.errors.full_messages, status: 404
     end
   end
 
-  def edit
+  def update
     @route = Route.find_by(id: params[:id])
-    if @route.update
-      redirect_to api_route(@route)
+    if @route.update(route_params)
+      render :show
     else
       render json: @route.errors.full_messages, status: 404
     end
@@ -39,10 +39,10 @@ class Api::RoutesController < ApplicationController
   def destroy
     @route = Route.find_by(id: params[:id])
     if @route
-      logout
+      @route.destroy
       render json: {}
     else
-      render json: ["User not found"], status: 400
+      render json: ["Route undeleteable ?!? Delete again?!"], status: 400
     end
   end
 
