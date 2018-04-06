@@ -5,7 +5,7 @@ import {
   Switch,
   HashRouter
 } from 'react-router-dom'
-import { AuthRoute, ProtectedRoute } from '../../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../../util/url_route_util';
 import Splash from './splash';
 import User from './users';
 
