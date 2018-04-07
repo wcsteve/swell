@@ -4,7 +4,6 @@ import Greeting from './greeting'
 
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser
-  // currentUser: {username: "Woody2", password: "password"}
 })
 
 const mapDispatchToProps = (dispatch) => ({

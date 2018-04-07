@@ -1,8 +1,7 @@
-export const fetchRoutes = (userId) => (
+export const fetchRoutes = () => (
   $.ajax({
       url: '/api/routes/',
       method: 'get',
-      data: { userId }
   })
 )
 

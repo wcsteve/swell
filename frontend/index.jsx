@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {fetchRoutes, fetchRoute, createRoute, updateRoute, deleteRoute} from './util/route_api_util'
+import {requestAllRoutes,
+requestSingleRoute,
+createRoute,
+updateRoute,
+deleteRoute} from './actions/route_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -14,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.fetchRoutes = fetchRoutes;
-  window.fetchRoute = fetchRoute;
+  window.requestAllRoutes = requestAllRoutes;
+  window.requestSingleRoute = requestSingleRoute;
   window.createRoute = createRoute;
   window.updateRoute = updateRoute;
   window.deleteRoute = deleteRoute;

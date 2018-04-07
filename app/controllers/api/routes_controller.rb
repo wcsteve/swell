@@ -1,7 +1,7 @@
 class Api::RoutesController < ApplicationController
 
   def index
-    @routes = Route.where(user_id: params[:userId])
+    @routes = Route.where(user_id: current_user.id)
     if @routes
       render :index
     else
