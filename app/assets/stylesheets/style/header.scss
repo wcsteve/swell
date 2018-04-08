@@ -30,9 +30,6 @@
   border: 1px solid #cccccc;
 }
 
-.session-nav-bar{
-}
-
 .main-nav-bar{
   display: flex;
   flex-direction: row;
@@ -41,15 +38,34 @@
   width: 80vw;
 }
 
-.main-nav-button {
+.site-nav-bar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.session-nav-bar{
+  display: flex;
+  align-items: right;
+  margin-right: 50px;
+  margin-left: 200px;
+  justify-content: space-between;
+}
+
+.site-nav-button {
   box-sizing: border-box;
-  border-radius: 1px;
+  width: 115px;
+  
+
+
   font-size: 11px;
   padding: 12px 40px;
   border: 1px solid #cccccc;
 }
 
 .sign-out-button {
+  box-sizing: border-box;
   border-radius: 1px;
   font-size: 11px;
   padding: 12px 40px;
