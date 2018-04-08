@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import { Control, ButtonBar } from './map_controls'
 import CreateRouteFormComponent from './create_route_form_component'
 
+
 class RouteMap extends React.Component{
   constructor(props) {
   super(props);
     this.markers = [];
+    this.arrayLatLngs = [];
+    this.redo = [];
     this.directionsServiceOjb = new google.maps.DirectionsService();
     //create an object of type DirectionsService
 
@@ -16,6 +19,10 @@ class RouteMap extends React.Component{
     // Creates a DirectionRnderer object which will handle displaying DirectionsResult
     this.centerMap = this.centerMap.bind(this);
     this.removeLastMarker = this.removeLastMarker.bind(this);
+    this.state = {
+      polyline: null,
+      path: null
+    }
   }
 
 
@@ -61,7 +68,6 @@ class RouteMap extends React.Component{
       }
     });
 
-    window.map = this.map
   }
 
   calcRoute(){
@@ -69,6 +75,8 @@ class RouteMap extends React.Component{
     const wayPtLatLongs = waypts.map(
       waypt => ({location: waypt.position, stopover: false})
     );
+
+
     const request = {
       origin: this.markers[0].position,
       destination: this.markers[this.markers.length - 1].position,
@@ -78,15 +86,27 @@ class RouteMap extends React.Component{
     }
 
     this.directionsServiceOjb.route(request, (response, status) => {
+      window.response = response
       if (status == 'OK') {
-        this.directionsResultRenderer.setDirections(response);
+        this.directionsResultRenderer.setDirections(response),
+        updateRouteState(response.routes[0])
+        //response returns and array of Google DirectionsResult objects
       }
     });
   }
 
+  updateRouteState(googleMapsRouteResponse){
+    this.setState({
+      polyline: googleMapsRouteResponse.overview_polyline,
+      path: googleMapsRouteResponse.overview_path,
+      duration: googleMapsRouteResponse.duration.text,
+      distance: googleMapsRouteResponse.distance.value
+    })
+    // this.routes.waypts =
+  }
+
   componentDidMount() {
     this.initMap();
-    window.map = this.map;
   }
 
   centerMap(){
@@ -96,11 +116,23 @@ class RouteMap extends React.Component{
   removeLastMarker(){
     if (this.markers.length >= 2 ) {
       let markerToDelete = this.markers[this.markers.length - 1]
+      this.redo.push(markerToDelete)
       this.markers.splice(-1, 1);
+      this.arrayLatLngs.splice(-1, 1);
       markerToDelete.setMap(null);
       this.calcRoute();
     }
   }
+
+  // addBackLastMarker(){
+  //   if (this.redo.length >= 1 ) {
+  //     let markerToDelete = this.markers[this.markers.length - 1]
+  //     this.redo.push(markerToDelete)
+  //     this.markers.splice(-1, 1);
+  //     markerToDelete.setMap(null);
+  //     this.calcRoute();
+  //   }
+  // }
 
   render() {
 
@@ -110,10 +142,13 @@ class RouteMap extends React.Component{
     return (
     <React.Fragment>
       <div ref="renderedMap" id="map-container"/>
-        <div className="button-bar">
-          {center}
-          {undo}
-        </div>
+      <div className="button-bar">
+        {center}
+        {undo}
+      </div>
+      <CreateRouteFormComponent path={this.arrayLatLngs}
+        createRoute={this.props.create}
+        currentUser={this.props.currentUser}/>
     </React.Fragment>
     )
   }
