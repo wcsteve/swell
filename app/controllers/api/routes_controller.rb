@@ -19,6 +19,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def create
+    debugger
     @route = Route.new(route_params)
     if @route.save
       redirect_to api_route_url(@route)
@@ -49,7 +50,7 @@ class Api::RoutesController < ApplicationController
   def route_params
     params.require(:route).permit(
       :user_id, :title, :description, :distance, :distance_unit, :duration,
-      :elevation_gain, :polyline
+      :elevation_gain, :polyline, :path
     )
   end
 

@@ -18,11 +18,16 @@ class RouteMap extends React.Component{
     });
     // Creates a DirectionRnderer object which will handle displaying DirectionsResult
     this.centerMap = this.centerMap.bind(this);
-    this.updateRouteState = this.updateRouteState.bind(this)
+    this.updateRouteState = this.updateRouteState.bind(this);
     this.removeLastMarker = this.removeLastMarker.bind(this);
+    this.calcElevation = this.calcElevation.bind(this);
+    window.state = this.state
     this.state = {
       polyline: null,
-      path: null
+      path: null,
+      path: null,
+      duration: null,
+      distance: null,
     }
   }
 
@@ -71,6 +76,29 @@ class RouteMap extends React.Component{
 
   }
 
+  calcElevation(overviewPath){
+    let total = 0
+    const elevator = new google.maps.ElevationService;
+    var elevation = elevator.getElevationAlongPath(
+      {
+        path: overviewPath,
+        samples: overviewPath.length
+      },
+      (result, status) => {
+        window.result = result
+        if (status == 'OK') {
+          for (var i = 0; i < result.length - 1; i++) {
+            if (result[i].elevation < result[i + 1].elevation) {
+              total += result[i + 1].elevation - result[i].elevation;
+            }
+          }
+        }
+        this.setState({ elevation: total });
+        return total;
+      }
+    );
+  }
+
   calcRoute(){
     const waypts = this.markers.slice(1, this.markers.length - 1);
     const wayPtLatLongs = waypts.map(
@@ -91,12 +119,15 @@ class RouteMap extends React.Component{
       if (status == 'OK') {
         this.directionsResultRenderer.setDirections(response),
         this.updateRouteState(response.routes[0])
+
         //response returns and array of Google DirectionsResult objects
       }
     });
   }
 
   updateRouteState(googleMapsRouteResponse){
+
+    const elavation = this.calcElevation(googleMapsRouteResponse.overview_path)
     this.setState({
       polyline: googleMapsRouteResponse.overview_polyline,
       path: googleMapsRouteResponse.overview_path,
@@ -104,6 +135,7 @@ class RouteMap extends React.Component{
       distance: googleMapsRouteResponse.legs[0].distance.value
     })
     // this.routes.waypts =
+    console.log(this.state)
   }
 
   componentDidMount() {
@@ -147,7 +179,7 @@ class RouteMap extends React.Component{
         {center}
         {undo}
       </div>
-      <CreateRouteFormComponent path={this.arrayLatLngs}
+      <CreateRouteFormComponent routePath={this.state}
         createRoute={this.props.create}
         currentUser={this.props.currentUser}/>
     </React.Fragment>

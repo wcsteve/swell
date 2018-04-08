@@ -7,35 +7,54 @@ import RouteMap from './route_map';
 class CreateRouteFormComponent extends React.Component{
   constructor(props){
     super(props)
-    this.path = props.path
-    this.createRoute = this.props.createRoute
     this.state = {
-      user_id: this.props.currentUser.id,
+      user_id: 1,
       title: '',
       description: '',
       distance_unit: 'miles',
-      // distance: ,
-      // duration: ,
-      // elevation_gain: ,
-      // polyline: ,
+      polyline: null,
+      path: null,
+      duration: null,
+      distance: null,
+      elevation_gain: null,
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.updateState = this.updateState.bind(this);
   }
 
   handleInput(field){
     return (e) => this.setState({[field]: e.target.value})
   }
 
+  // updateState(){
+  //   this.setState({
+  //     user_id: this.state.user_id,
+  //     title: this.state.title,
+  //     description: this.state.description,
+  //     distance_unit: this.state.distance_unit,
+  //     polyline: this.props.routePath.polyline,
+  //     path: this.props.routePath.path,
+  //     duration: this.props.routePath.duration,
+  //     distance: this.props.routePath.distance,
+  //     elevation_gain: this.props.routePath.elevation
+  //   }, () => console.log(this.state))
+  // }
+
   handleSubmit(e){
     e.preventDefault();
-    let newPolyline =
-
-    this.setState({
-      polyline:
-        Polyline()
+    this.props.createRoute({
+      user_id: this.state.user_id,
+      title: this.state.title,
+      description: this.state.description,
+      distance_unit: this.state.distance_unit,
+      polyline: this.props.routePath.polyline,
+      path: JSON.stringify(this.props.routePath.path),
+      duration: this.props.routePath.duration,
+      distance: this.props.routePath.distance,
+      elevation_gain: this.props.routePath.elevation
     })
-    this.props.createRoute(this.state)
+    // .then(() => this.props.history.push("/routes"));
   }
 
   render(){
