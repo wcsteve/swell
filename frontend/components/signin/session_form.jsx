@@ -85,8 +85,9 @@ class SessionForm extends React.Component {
     }
 
 
+
     return(
-      <div>
+      <div className={this.props.formClass}>
 
 
         <form className="sessionform">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RouteMap from './map';
+import RouteMap from './route_map';
 
 class CreateRouteFormComponent extends React.Component{
   constructor(props){
@@ -13,8 +13,6 @@ class CreateRouteFormComponent extends React.Component{
 
     return(
       <React.Fragment>
-        <h1>{this.state.username}</h1>
-        <br />
         <RouteMap />
       </React.Fragment>
     )

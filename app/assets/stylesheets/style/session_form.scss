@@ -12,6 +12,26 @@
   align-items: center;
 }
 
+.sign-in-background{
+  background: image-url("jenny-hill.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sign-up-background{
+  background: image-url("nature-forest.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
 .session-form-input {
   height: 17px;
   padding: 12px 10px;
