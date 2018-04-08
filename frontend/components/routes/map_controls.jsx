@@ -1,9 +1,17 @@
 import React from 'react';
 
 export const Control = (eventToHandle, buttonName) => (
-    <div>
-      <div className="map-button-bar">
-        <div className="center" onClick={eventToHandle}>{buttonName}</div>
-      </div>
-    </div>
+    <React.Fragment>
+
+        <div className="map-button" onClick={eventToHandle}>{buttonName}</div>
+
+    </React.Fragment>
+)
+
+export const FormControl = ({ eventToHandle, buttonName }) => (
+    <React.Fragment>
+
+        <div onClick={eventToHandle}>{buttonName}</div>
+
+    </React.Fragment>
 )

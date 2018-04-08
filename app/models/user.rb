@@ -36,7 +36,7 @@ class User < ApplicationRecord
   end
 
   def ensure_icon_img_url
-    self.icon_img_url ||= '/assets/images/show_profile_icon.com.jpg'
+    self.icon_img_url ||= '/assets/images/default_profile_icon.jpg'
   end
 
 end

@@ -19,7 +19,6 @@ class Api::RoutesController < ApplicationController
   end
 
   def create
-    debugger
     @route = Route.new(route_params)
     if @route.save
       redirect_to api_route_url(@route)

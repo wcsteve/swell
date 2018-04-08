@@ -7,7 +7,6 @@ const Header = () => (
   <header className="Header">
     <h1 className="Logo">Swell</h1>
     <GreetingContainer />
-    <NavLink to='/routes'>Routes</NavLink>
   </header>
 )
 

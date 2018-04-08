@@ -1,9 +1,31 @@
-#map-container{
-  width: 80%;
-  height: 80%;
+@import "base/global.scss";
+.map-workspace{
+  width: 100vw;
+  height: 100%
 }
 
-.map-button-bar{
+#map-container{
+  width: 100vw;
+  height: 100%;
+}
+
+.map-button-bar {
+  width: 100vw;
+  // border: 2px solid #fff;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  background-color: #F1F1F1;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+  height: 38px;
+  padding: 6px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-button{
   background-color: #fff;
   border: 2px solid #fff;
   border-radius: 3px;
@@ -11,29 +33,158 @@
   cursor: pointer;
   margin-bottom: 22px;
   text-align: center;
-
-}
-
-.center {
   color: rgb(25,25,25);
   font-size: 16px;
   line-height: 38px;
-  padding-left: 5px;
-  padding-right: 5px;
-  // inner-html: 'Center Map';
+  height: 37px;
+  width: 80px;
+  margin: 0px 35px;
 }
 
-.button-bar {
+.map-form-container{
+  overflow: hidden;
+  top: 70px;
   position: absolute;
-  left: 400px;
-  z-index: 3000;
-  border: 2px solid #fff;
+  z-index: 3;
+  width: 600px;
+  height: 400px;
+  background: #EEEEEE;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  header{
+    width: 600px;
+    height: 70px;
+    position: relative;
+    background: #F6F6F6;
+    border-bottom: 1px solid #ccccd1;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+
+    h1{
+      font-weight: 300;
+      font-size: 30px;
+      padding-top: 5px;
+    }
+
+  }
+}
+
+.map-form-label-section{
+  height: 52px;
+  // width: 600px;
+  margin: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  input {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    height: 34px;
+    background-color: #fff;
+    border: 1px solid #ccccd1;
+    color: #666;
+    line-height: 1.4em;
+    vertical-align: baseline;
+    border-radius: 0px;
+  }
+}
+
+.map-form-text-area{
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    height: 50px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccccd1;
+    color: #666;
+    line-height: 1.4em;
+    vertical-align: baseline;
+    border-radius: 0px;
+    font-size: 14px;
+  }
+}
+
+.map-form {
+  height: 323px;
+  width: 600px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-size: 13.5px;
+  line-height: 1.4em;
+  p {
+    color: 232323;
+  }
+  label{
+    color: #606065;
+  }
+}
+
+.private-checkbox{
+  cursor: pointer;
+  clear: both;
+  color: #606065;
+  margin-top: 15px;
+  margin-bottom: 3px;
+  display: block;
+
+  input{
+    margin-right: 3px;
+    top: -2px;
+    position: relative;
+    border: none;
+    padding: 0;
+    vertical-align: middle;
+    box-shadow: none;
+  }
+
+  i{
+    margin-left: 3px;
+  }
+}
+
+.form-button-bar{
   display: flex;
   flex-direction: row;
-  background-color: #fff;
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+  justify-content: flex-end;
+  margin-top: 20px;
+  height: 40px;
+}
+
+.form-button {
   cursor: pointer;
-  margin-bottom: 22px;
+  height: 40px;
+  padding: 10px 16px;
   text-align: center;
+  border-radius: 2px;
+}
+
+.form-save{
+  border-color: #2d2d32;
+  width: 65px;
+  background-color: #2d2d32;
+  border-color: #2d2d32;
+  color: #fff;
+  margin-left: 5px;
+  cursor: pointer;
+  height: 40px;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.form-cancel{
+  border: 1px solid #ccccd1;
+  width: 78px;
+  background-color: #fff;
+  color: #2d2d32;
+  cursor: pointer;
+  height: 40px;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 2px;
 }

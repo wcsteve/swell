@@ -12,6 +12,7 @@ import RouteIndex from '../routes/routes_index';
 // import CreateRouteFormComponent from '../routes/create_route_form_component';
 // import RouteFormContainer from '../routes/route_form_container';
 import RouteMapContainer from '../routes/route_map_container'
+import Modal from '../modal/modal'
 
 
 const Main = () => (

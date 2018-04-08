@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Control, ButtonBar } from './map_controls'
-import CreateRouteFormComponent from './create_route_form_component'
-
+import { Control } from './map_controls'
+import RouteFormContainer from './route_form_container'
 
 class RouteMap extends React.Component{
   constructor(props) {
@@ -21,13 +20,14 @@ class RouteMap extends React.Component{
     this.updateRouteState = this.updateRouteState.bind(this);
     this.removeLastMarker = this.removeLastMarker.bind(this);
     this.calcElevation = this.calcElevation.bind(this);
-    window.state = this.state
+    this.addForm = this.addForm.bind(this);
     this.state = {
       polyline: null,
       path: null,
       path: null,
       duration: null,
       distance: null,
+      form: null,
     }
   }
 
@@ -47,11 +47,11 @@ class RouteMap extends React.Component{
           "stylers": [{"visibility": 'off'}]
         }
       ],
-      mapTypeControl: true,
-      mapTypeControlOptions: {
-       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      mapTypeControl: false,
+      zoomControl: true,
+      zoomControlOptions: {
        position: google.maps.ControlPosition.RIGHT_TOP
-     }
+      }
     };
     this.map = new google.maps.Map(this.refs.renderedMap, mapOptions);
     this.directionsResultRenderer.setMap(this.map);
@@ -167,22 +167,45 @@ class RouteMap extends React.Component{
   //   }
   // }
 
+  addForm(input){
+    this.setState({form: input})
+  }
+
   render() {
 
     const center = Control(this.centerMap, "Center");
     const undo = Control(this.removeLastMarker, "Undo");
+    const save = Control(() => this.addForm(true), "Save");
+
+    let form = undefined
+    if (this.state.form === true){
+     form =
+        <div className="modal-container">
+
+          <RouteFormContainer routePath={this.state}
+            createRoute={this.props.create}
+            currentUser={this.props.currentUser}
+            closeForm={this.addForm}/>
+        </div>
+    }
 
     return (
-    <React.Fragment>
-      <div ref="renderedMap" id="map-container"/>
-      <div className="button-bar">
-        {center}
-        {undo}
-      </div>
-      <CreateRouteFormComponent routePath={this.state}
-        createRoute={this.props.create}
-        currentUser={this.props.currentUser}/>
-    </React.Fragment>
+      <React.Fragment>
+        <main className="map-workspace">
+
+          <nav className="map-button-bar">
+            {undo}
+            {center}
+            {save}
+          </nav>
+
+          <div ref="renderedMap" id="map-container">
+            {form}
+          </div>
+
+        </main>
+
+      </React.Fragment>
     )
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import NavBar from './site_nav_bar'
 
 const sessionLinks = () => (
   <nav className="SignInNavBar">
@@ -11,13 +12,15 @@ const sessionLinks = () => (
 )
 
 const personalGreeting = (currentUser, logout) => (
-  <div className="SignInNavBar">
-    <h2>{currentUser.username}</h2>
-    <button
-      className="SessionButton"
-      type="button"
-      onClick={logout}>Log Out
-    </button>
+  <div className="main-nav-bar">
+    <NavBar/>
+    <nav className="session-nav-bar">
+      <button
+        className="sign-out-button"
+        type="button"
+        onClick={logout}>Log Out
+      </button>
+    </nav>
   </div>
 )
 

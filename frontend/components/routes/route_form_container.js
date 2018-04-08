@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import { createRoute } from '../../actions/route_actions';
-import CreateRouteFormComponent from './create_route_form_component'
+import CreateRouteFormComponent from './create_route_form_component';
+import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  create: (route) => dispatch(createRoute(route))
+  create: (route) => dispatch(createRoute(route)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateRouteFormComponent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateRouteFormComponent));

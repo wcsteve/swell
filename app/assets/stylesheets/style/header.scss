@@ -29,3 +29,29 @@
   padding: 12px 40px;
   border: 1px solid #cccccc;
 }
+
+.session-nav-bar{
+}
+
+.main-nav-bar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+}
+
+.main-nav-button {
+  box-sizing: border-box;
+  border-radius: 1px;
+  font-size: 11px;
+  padding: 12px 40px;
+  border: 1px solid #cccccc;
+}
+
+.sign-out-button {
+  border-radius: 1px;
+  font-size: 11px;
+  padding: 12px 40px;
+  border: 1px solid #cccccc;
+}
