@@ -18,6 +18,7 @@ class RouteMap extends React.Component{
     });
     // Creates a DirectionRnderer object which will handle displaying DirectionsResult
     this.centerMap = this.centerMap.bind(this);
+    this.updateRouteState = this.updateRouteState.bind(this)
     this.removeLastMarker = this.removeLastMarker.bind(this);
     this.state = {
       polyline: null,
@@ -89,7 +90,7 @@ class RouteMap extends React.Component{
       window.response = response
       if (status == 'OK') {
         this.directionsResultRenderer.setDirections(response),
-        updateRouteState(response.routes[0])
+        this.updateRouteState(response.routes[0])
         //response returns and array of Google DirectionsResult objects
       }
     });
@@ -99,8 +100,8 @@ class RouteMap extends React.Component{
     this.setState({
       polyline: googleMapsRouteResponse.overview_polyline,
       path: googleMapsRouteResponse.overview_path,
-      duration: googleMapsRouteResponse.duration.text,
-      distance: googleMapsRouteResponse.distance.value
+      duration: googleMapsRouteResponse.legs[0].duration.text,
+      distance: googleMapsRouteResponse.legs[0].distance.value
     })
     // this.routes.waypts =
   }
