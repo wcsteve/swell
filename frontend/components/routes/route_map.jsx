@@ -23,6 +23,7 @@ class RouteMap extends React.Component{
     this.removeLastMarker = this.removeLastMarker.bind(this);
     this.calcElevation = this.calcElevation.bind(this);
     this.addForm = this.addForm.bind(this);
+    this.addBackLastMarker = this.addBackLastMarker.bind(this);
     this.state = {
       polyline: null,
       path: null,
@@ -149,14 +150,17 @@ class RouteMap extends React.Component{
     }
   }
 
-  // addBackLastMarker(){
-  //   if (this.redo.length >= 1 ) {
-  //     this.markers.push(this.redo.pop())
-  //     this.markers.splice(-1, 1);
-  //     markerToDelete.setMap(null);
-  //     this.calcRoute();
-  //   }
-  // }
+  addBackLastMarker(){
+    if (this.redo.length >= 1 ) {
+      this.markers.push(this.redo.pop())
+      // markerToDelete.setMap(null);
+      this.calcRoute();
+    }
+  }
+
+  exitForm(){
+    this.props.history.push("/routes")
+  }
 
   addForm(input){
     this.setState({form: input})
@@ -166,7 +170,7 @@ class RouteMap extends React.Component{
 
     const center = Control(this.centerMap, "Center");
     const undo = Control(this.removeLastMarker, "Undo");
-    const redo = Control(this.removeLastMarker, "Redo");
+    const redo = Control(this.addBackLastMarker, "Redo");
     const save = Control(() => this.addForm(true), "Save");
 
     let form = undefined
@@ -191,6 +195,7 @@ class RouteMap extends React.Component{
               {redo}
               {center}
               {save}
+              <div className="map-button" onClick={() => this.exitForm()}>Exit</div>
             </ul>
           </nav>
 
