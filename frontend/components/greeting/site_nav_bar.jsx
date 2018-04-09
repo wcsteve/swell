@@ -5,15 +5,15 @@ const NavBar = () => (
   <ul className="site-nav-bar">
 
     <li className="site-nav-button">
-      <NavLink to="/users">Dashboard</NavLink>
+      <NavLink exact={true} activeClassName="button-contents" to="/users">Dashboard</NavLink>
     </li>
 
     <li className="site-nav-button">
-      <NavLink to="/workouts">Training</NavLink>
+      <NavLink exact={true} activeClassName="button-contents" to="/workouts">Training</NavLink>
     </li>
 
     <li className="site-nav-button">
-      <NavLink to="/routes">My Routes</NavLink>
+      <NavLink exact={true} activeClassName="button-contents" to="/routes">My Routes</NavLink>
     </li>
 
   </ul>

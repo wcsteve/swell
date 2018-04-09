@@ -4,15 +4,15 @@
   position: relative;
   border-radius: 3px;
   width: 400px;
-  height: 600px;
-  top: 40px;
+  height: 592px;
+  top: 60px;
   background: rgba(0,0,0,0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.sign-in-background{
+.sign-in-background {
   background: image-url("jenny-hill.jpg");
   background-size: cover;
   display: flex;
@@ -33,21 +33,15 @@
 }
 
 .session-form-input {
-  height: 17px;
-  padding: 12px 10px;
-  margin: 6px 0;
+  height: 40px;
+  // background-color: rgba(0, 0, 0, 0.5);
   justify-content: space-around;
   width: 300px;
-  font-size: 20px;
+  // font-size: 14px;
+  // font-weight: 400;
   border-radius: 3px;
 }
 
-.user-input{
-  background: rgba(0,0,0,0.5);
-  border: 1px solid #666;
-  color: #CDCDCD;
-  margin: 10px 0px;
-}
 
 .session-link{
   text-align: center;
@@ -56,7 +50,7 @@
   border-color: #fc4c02;
   align-content: center;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
 
 }
 
@@ -67,7 +61,7 @@
   border-color: #2C5C94;
   align-content: center;
   margin: 5px 0px;
-  font-size: 16px;
+  font-size: 14px;
 
 }
 .session-welcome {
@@ -77,15 +71,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: box-sizing;
-  height: 12%;
+  box-sizing: border-box;
+  height: 76px;
 
   h2 {
-    color: #EEEEEE;
-    font-weight: 200;
+    color: rgb(238, 238, 238);
     font-size: 30px;
     margin: 20px;
-    font-weight: 250;
+    font-weight: 300;
+    line-height: 36px;
   }
 }
 
@@ -98,7 +92,20 @@
   padding-top: 75px;
 
   input::placeholder {
-  font-size: 18px;
+  font-size: 14px;
   }
 
+}
+
+.user-input{
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #666;
+  color: #CCC;
+  margin: 10px 0px;
+
+  input[type=text]:focus {
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 0 8px 0 rgba(255,255,255,0.8);
+  }
 }

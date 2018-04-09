@@ -1,0 +1,42 @@
+.route-main{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  width: 100%;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 30px;
+  padding-bottom: 80px;
+  margin-left: auto;
+  margin-right: auto;
+
+
+  .route-header{
+    height: 114px;
+    width: 90%;
+
+    .create-route-button{
+      font-size: 14px;
+      color: rgb(255, 255, 255);
+      background-color: #fc4c02;
+      width: 117px;
+      height: 18px;
+      padding: 10px 16px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+  }
+
+  .route-body{
+    width: 90%;
+    border-top: 1px solid #ccccd1;
+        padding: 10px 0 0 0;
+  }
+}
