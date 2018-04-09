@@ -30,7 +30,6 @@ class CreateRouteFormComponent extends React.Component{
       description: this.state.description,
       distance_unit: this.state.distance_unit,
       polyline: this.props.routePath.polyline,
-      path: JSON.stringify(this.props.routePath.path),
       duration: this.props.routePath.duration,
       distance: this.props.routePath.distance,
       elevation_gain: this.props.routePath.elevation
