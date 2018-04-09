@@ -13,7 +13,7 @@ class RouteIndex extends React.Component{
         this.props.routes.map(singleRoute =>
           <RouteIndexItem
             route={singleRoute}
-            delete={() => this.props.delete()}
+            delete={this.props.deleteRoute}
             key={singleRoute.id}
             />
         )

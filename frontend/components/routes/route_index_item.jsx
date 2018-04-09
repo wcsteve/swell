@@ -1,17 +1,19 @@
 import React from 'react';
-import SmallMap from './small_map'
+import SmallMap from './small_map';
+
 
 export default class RouteIndexItem extends React.Component {
   constructor(props){
     super(props)
     this.route = this.props.route;
+
   }
 
   render(){
 
     const routeDate = new Date(this.route.createdAt);
     const dateParsed = routeDate.toDateString();
-
+    const routeId = this.props.route.id
 
     return (
       <li className="route-list-item">
@@ -27,7 +29,7 @@ export default class RouteIndexItem extends React.Component {
           <ul className="route-stat-list">
 
             <li>
-              <strong>{(this.route.distance / 1000).toFixed(2)}
+              <strong>{(this.route.distance).toFixed(2)}
                 <abbr>mi</abbr>
               </strong>
               <label>Distance</label>
@@ -44,8 +46,9 @@ export default class RouteIndexItem extends React.Component {
 
           <div className="route-time-data">
             <span>Est Moving Time </span>
+            {this.route.duration}
           </div>
-
+          <button className="delete-route" onClick={() => this.props.delete(routeId)}>Delete</button>
         </section>
 
         <footer className="route-timestamp-footer">

@@ -19,6 +19,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def create
+    debugger
     @route = Route.new(route_params)
     if @route.save
       redirect_to api_route_url(@route)
@@ -37,6 +38,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def destroy
+    # debugger
     @route = Route.find_by(id: params[:id])
     if @route
       @route.destroy
