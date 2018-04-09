@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Control } from './map_controls';
 import RouteFormContainer from './route_form_container';
 import { MapBottomPanel } from './map_bottom_panel';
+import mapStyle from '../../util/map_style.js'
 
 class RouteMap extends React.Component{
   constructor(props) {
@@ -25,15 +26,13 @@ class RouteMap extends React.Component{
     this.state = {
       polyline: null,
       path: null,
-      path: null,
       duration: "--:--",
       distance: "",
       elevation: "",
       form: null,
+      coordinates: null,
     }
   }
-
-
   initMap() {
     const mapOptions = {
       center: { lat: 37.773972, lng: -122.431297 },
@@ -43,13 +42,7 @@ class RouteMap extends React.Component{
       zoomControlOptions: {
         position: google.maps.ControlPosition.LEFT_TOP
       },
-      styles: [
-        {
-          "featureType": "poi",
-          "stylers": [{"visibility": 'off'}]
-        }
-      ],
-      mapTypeControl: false,
+      styles: mapStyle
     };
     this.map = new google.maps.Map(this.refs.renderedMap, mapOptions);
     this.directionsResultRenderer.setMap(this.map);
@@ -103,7 +96,7 @@ class RouteMap extends React.Component{
       waypt => ({location: waypt.position, stopover: false})
     );
 
-
+    var returned;
     const request = {
       origin: this.markers[0].position,
       destination: this.markers[this.markers.length - 1].position,
@@ -117,10 +110,11 @@ class RouteMap extends React.Component{
       if (status == 'OK') {
         this.directionsResultRenderer.setDirections(response),
         this.updateRouteState(response.routes[0])
-
+        returned = response;
         //response returns and array of Google DirectionsResult objects
       }
     });
+
   }
 
   updateRouteState(googleMapsRouteResponse){
@@ -130,9 +124,9 @@ class RouteMap extends React.Component{
       polyline: googleMapsRouteResponse.overview_polyline,
       path: googleMapsRouteResponse.overview_path,
       duration: googleMapsRouteResponse.legs[0].duration.text,
-      distance: (googleMapsRouteResponse.legs[0].distance.value / 1000.0).toFixed(2)
+      distance: (googleMapsRouteResponse.legs[0].distance.value / 1000.0).toFixed(2),
     })
-    // this.routes.waypts =
+
     console.log(this.state)
   }
 
@@ -157,8 +151,7 @@ class RouteMap extends React.Component{
 
   // addBackLastMarker(){
   //   if (this.redo.length >= 1 ) {
-  //     let markerToDelete = this.markers[this.markers.length - 1]
-  //     this.redo.push(markerToDelete)
+  //     this.markers.push(this.redo.pop())
   //     this.markers.splice(-1, 1);
   //     markerToDelete.setMap(null);
   //     this.calcRoute();
@@ -187,7 +180,7 @@ class RouteMap extends React.Component{
             closeForm={this.addForm}/>
         </div>
     }
-
+    window.state = this.state;
     return (
       <React.Fragment>
         <main className="map-workspace">
@@ -220,20 +213,6 @@ class RouteMap extends React.Component{
 }
 
 export default RouteMap;
-// this.state =
-// this.state = {
-//   travelMode: 'WALKING',
-//   polyline: null,
-//   result: null,
-//   duration: '--:--',
-//   distance: '',
-//   elevation: 0,
-//   path: null,
-//   markers: [],
-//   undo: [],
-//   redo: []
-// };
-
 // ideas to implement:
 //   DirectionsResult
 //   optimizeWaypoints: true

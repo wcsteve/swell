@@ -1,4 +1,5 @@
 import React from 'react';
+import SmallMap from './small_map'
 
 export default class RouteIndexItem extends React.Component {
   constructor(props){
@@ -10,6 +11,7 @@ export default class RouteIndexItem extends React.Component {
 
     return (
       <li className="route-list-item">
+        <SmallMap route={this.route}/>
         <div>Small Map</div>
         <section className="route-meta-data">
           <h3>{this.route.title}</h3>
