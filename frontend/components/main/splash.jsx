@@ -5,6 +5,7 @@ import SignInFormContainer from '../signin/signin_form_container';
 
 
 const HomePage = () => (
+  <main className="home-page-background">
     <div className="splash-header">
       <h1>
         The App for Fitness Enthusiasts
@@ -12,6 +13,7 @@ const HomePage = () => (
         It's Time to Get Swell
       </h1>
     </div>
+  </main>
 )
 
 const Splash = () => (

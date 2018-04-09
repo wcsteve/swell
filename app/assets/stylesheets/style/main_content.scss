@@ -1,19 +1,28 @@
 .Main-Content {
   width: 100%;
-  height: 100%;
+  // height: 100vh;
   background-color: #f5f5fa;
   display: flex;
   justify-content: center;
 }
 
 .Splash {
-  background: image-url("sea-coast.jpg");
   background-size: cover;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   flex-direction: column;
   align-items: center;
   display: flex;
+}
+
+.home-page-background{
+  background: image-url("sea-coast.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .splash-header{

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Control } from './map_controls'
-import RouteFormContainer from './route_form_container'
+import { Control } from './map_controls';
+import RouteFormContainer from './route_form_container';
+import { MapBottomPanel } from './map_bottom_panel';
 
 class RouteMap extends React.Component{
   constructor(props) {
@@ -25,8 +26,9 @@ class RouteMap extends React.Component{
       polyline: null,
       path: null,
       path: null,
-      duration: null,
-      distance: null,
+      duration: "--:--",
+      distance: "",
+      elevation: "",
       form: null,
     }
   }
@@ -48,10 +50,6 @@ class RouteMap extends React.Component{
         }
       ],
       mapTypeControl: false,
-      zoomControl: true,
-      zoomControlOptions: {
-       position: google.maps.ControlPosition.RIGHT_TOP
-      }
     };
     this.map = new google.maps.Map(this.refs.renderedMap, mapOptions);
     this.directionsResultRenderer.setMap(this.map);
@@ -93,7 +91,7 @@ class RouteMap extends React.Component{
             }
           }
         }
-        this.setState({ elevation: total });
+        this.setState({ elevation: total.toFixed(2) });
         return total;
       }
     );
@@ -132,7 +130,7 @@ class RouteMap extends React.Component{
       polyline: googleMapsRouteResponse.overview_polyline,
       path: googleMapsRouteResponse.overview_path,
       duration: googleMapsRouteResponse.legs[0].duration.text,
-      distance: googleMapsRouteResponse.legs[0].distance.value
+      distance: (googleMapsRouteResponse.legs[0].distance.value / 1000.0).toFixed(2)
     })
     // this.routes.waypts =
     console.log(this.state)
@@ -175,6 +173,7 @@ class RouteMap extends React.Component{
 
     const center = Control(this.centerMap, "Center");
     const undo = Control(this.removeLastMarker, "Undo");
+    const redo = Control(this.removeLastMarker, "Redo");
     const save = Control(() => this.addForm(true), "Save");
 
     let form = undefined
@@ -194,14 +193,22 @@ class RouteMap extends React.Component{
         <main className="map-workspace">
 
           <nav className="map-button-bar">
-            {undo}
-            {center}
-            {save}
+            <ul>
+              {undo}
+              {redo}
+              {center}
+              {save}
+            </ul>
           </nav>
 
           <div ref="renderedMap" id="map-container">
             {form}
           </div>
+
+          <MapBottomPanel
+            distance={this.state.distance}
+            elevationGain={this.state.elevation}
+            time={this.state.duration}/>
 
         </main>
 
