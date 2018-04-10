@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  icon_img_url    :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   validates :username, :email, :session_token, presence: true, uniqueness: true
   validates :password_digest, :icon_img_url, presence: true
@@ -9,6 +23,10 @@ class User < ApplicationRecord
   has_many :routes,
     foreign_key: :user_id,
     class_name: :Route
+
+  has_many :workouts,
+    foreign_key: :user_id,
+    class_name: :Workout
 
   def password=(password)
     @password = password

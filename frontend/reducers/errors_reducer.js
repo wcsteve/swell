@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import sessionErrorsReducer from "./errors/session_errors_reducer";
 import routeErrorsReducer from './errors/route_errors_reducer';
+import workoutErrorsReducer from './errors/workout_errors_reducer';
 
 const errorsReducer = combineReducers({
   session: sessionErrorsReducer,
-  route: routeErrorsReducer
+  route: routeErrorsReducer,
+  workout: workoutErrorsReducer
 })
 
 export default errorsReducer;

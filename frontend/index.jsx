@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {requestAllRoutes,
-requestSingleRoute,
-createRoute,
-updateRoute,
-deleteRoute} from './actions/route_actions';
+import {requestAllWorkouts,
+requestSingleWorkout,
+createWorkout,
+updateWorkout,
+deleteWorkout} from './actions/workout_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.requestAllRoutes = requestAllRoutes;
-  window.requestSingleRoute = requestSingleRoute;
-  window.createRoute = createRoute;
-  window.updateRoute = updateRoute;
-  window.deleteRoute = deleteRoute;
+  window.requestAllWorkouts = requestAllWorkouts;
+  window.requestSingleWorkout = requestSingleWorkout;
+  window.createWorkout = createWorkout;
+  window.updateWorkout = updateWorkout;
+  window.deleteWorkout = deleteWorkout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   ReactDOM.render(<Root store={ store } />, root);
