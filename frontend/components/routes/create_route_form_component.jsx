@@ -9,7 +9,6 @@ class CreateRouteFormComponent extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      user_id: 1,
       title: '',
       description: '',
       distance_unit: 'miles'

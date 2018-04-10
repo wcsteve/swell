@@ -20,6 +20,7 @@ class Api::RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
+    @route.user_id = current_user.id
     if @route.save
       redirect_to api_route_url(@route)
     else
