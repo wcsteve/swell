@@ -12,7 +12,7 @@ class WorkOutStatsWidget extends React.Component{
   }
 
   render(){
-    
+
     return (
       <React.Fragment>
         <h1>WorkoutStatsWidget</h1>

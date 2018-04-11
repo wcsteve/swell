@@ -22,7 +22,7 @@ class Api::RoutesController < ApplicationController
     @route = Route.new(route_params)
     @route.user_id = current_user.id
     if @route.save
-      redirect_to api_route_url(@route)
+      render :show
     else
       render json: @route.errors.full_messages, status: 404
     end

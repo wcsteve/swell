@@ -1,9 +1,8 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-// import LoginFormContainer from '../session_form/login_form_container';
-// import SignupFormContainer from '../session_form/signup_form_container';
-import RouteFormContainer from '../routes/route_form_container'
+import WorkOutFormContainer from '../workout/workout_form_container';
+import EditWorkoutFormContainer from '../workout/edit_workout_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -11,8 +10,10 @@ function Modal({modal, closeModal}) {
   }
   let component;
   switch (modal) {
-    case 'route':
-      component = <RouteFormContainer />;
+    case 'workout':
+      component = <WorkOutFormContainer />;
+    // case 'editWorkout':
+    //   component = <EditWorkoutFormContainer />;
       break;
     default:
       return null;

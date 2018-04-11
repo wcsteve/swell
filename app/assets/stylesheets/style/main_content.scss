@@ -1,14 +1,13 @@
 .Main-Content {
   width: 100%;
-  height: calc(100vh - 55px);
   background-color: #f5f5fa;
   display: flex;
   justify-content: center;
 }
 
 .Splash {
+  height: calc(100vh - 55px);
   background-size: cover;
-  height: 100vh;
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -16,6 +15,7 @@
 }
 
 .home-page-background{
+  height: calc(100vh - 55px);
   background: image-url("sea-coast.jpg");
   background-size: cover;
   display: flex;

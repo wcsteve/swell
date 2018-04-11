@@ -1,0 +1,171 @@
+.workout-feed-container{
+  border: 1px solid black;
+  width: 624px;
+  padding: 0px 16px;
+  box-sizing: border-box;
+  height: 981px;
+  overflow: scroll;
+
+  .feed-header{
+    height: 64px;
+    padding: 12px 0px;
+    border-color: transparent;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  summary{
+    background-color: #ffffff;
+    box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
+    border-radius: 4px;
+    width: 592px;
+    height: 304px;
+    margin-bottom: 12px;
+  }
+
+  .feed-list{
+
+  }
+}
+
+.card {
+  background-color: #ffffff;
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
+  border-radius: 4px;
+  height: 215px;
+  width: 592px;
+  // margin: 12px 0px;
+  box-sizing: border-box;
+
+  .item-feed-header{
+    height: 64px;
+    padding: 12px 0px;
+    border-color: transparent;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 8px;
+    padding-top: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+
+    .avatar{
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: #f5f5fa;
+      float: right;
+      margin-right: 24px;
+    }
+
+    .feed-workout-title{
+
+    }
+
+    .entry-username{
+      width: 416px;
+      height:17px;
+      color: #2d2d32;
+      font-weight: 700;
+      transition: color 0.15s ease;
+      will-change: color;
+      font-size: 14px;
+      display: block;
+    }
+
+    .feed-time{
+      display: block;
+      font-size: 11px;
+      color: #666;
+      font-weight: 400;
+      height: 15px;
+    }
+  }
+
+  .entry-body{
+    width: 592px;
+    height: 75px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding-left: 24px;
+    padding-right: 88px;
+    display: flex;
+
+    .entry-icon{
+      padding-top: 2px;
+      padding-right: 0;
+      margin-right: 24px;
+      text-align: center;
+      width: 40px;
+      height: 75px;
+      display: flex;
+    }
+
+    .workout-main-body{
+      width: 416px;
+      height: 75px;
+
+      .title-text{
+        margin-bottom: 8px;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.333;
+        margin-top: 0;
+        letter-spacing: -0.02rem;
+      }
+
+      .stat-ul{
+        width: 416px;
+        height: 41px;
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-between;
+
+        li{
+          padding-right: 16px;
+          height: 41px;
+          margin-right: 20.5px;
+          display: flex;
+          flex-direction: column;
+
+          .middle-stat {
+            margin-left: 10.5px;
+            padding-left: 16px;
+            padding-right: 16px;
+            width: 107.5px;
+          }
+
+          span{
+            font-size: 12px;
+            color: #606065;
+            width: 72.5;
+            height: 14px;
+            // display: block;
+
+          }
+
+          b{
+            line-height: 1;
+            font-weight: 400;
+            white-space: nowrap;
+            // display: block;
+          }
+        }
+      }
+    }
+
+
+
+  }
+
+  .feed-item-footer{
+    width: 544px;
+    height: 60px;
+    border-top: 1px solid #e6e6eb;
+    padding-top: 12px;
+    margin-right: 24px;
+    margin-left: 24px;
+  }
+}

@@ -1,7 +1,7 @@
 @import "base/global.scss";
 .map-workspace{
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 55px);
   display: flex;
   justify-content: center;
 }

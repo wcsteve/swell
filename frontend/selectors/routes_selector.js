@@ -12,3 +12,8 @@ export const selectUserRoutes = (state) => {
   const userRoutes = Object.values(state.entities.routes)
   return userRoutes;
 }
+
+export const selectUserWorkouts = (state) => {
+  const userWorkouts = Object.values(state.entities.workouts)
+  return userWorkouts;
+}

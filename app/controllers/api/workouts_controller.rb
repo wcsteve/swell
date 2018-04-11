@@ -1,7 +1,7 @@
 class Api::WorkoutsController < ApplicationController
 
   def index
-    @workouts = Workout.where(user_id: current_user.id)
+    @workouts = Workout.includes(:route).where(user_id: current_user.id)
     if @workouts
       render :index
     else
@@ -20,15 +20,22 @@ class Api::WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
+    @workout.user_id = current_user.id
+    @workout.workout_date = Date.parse(workout_params[:workout_date])
     if @workout.save
-      redirect_to api_workouts_url(@workout)
+      render :show
     else
+      debugger
       render json: @workout.errors.full_messages, status: 404
     end
   end
 
   def update
     @workout = Workout.find_by(id: params[:id])
+    if params[:workout_date]
+      @workout.workout_date = Date.parse(params[:workout_date])
+    end
+
     if @workout.update(workout_params)
       render :show
     else

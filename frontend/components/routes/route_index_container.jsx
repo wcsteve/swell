@@ -3,10 +3,11 @@ import { requestAllRoutes, deleteRoute } from '../../actions/route_actions';
 import { selectUserRoutes } from "../../selectors/routes_selector";
 import RouteIndex from './routes_index';
 
-const mapStateToProps = (state) => ({
-  // routes: selectUserRoutes(state.entities.routes, state.session.currentUser.id)
+const mapStateToProps = (state) => {
+
+  return {
   routes: selectUserRoutes(state)
-});
+}};
 
 const mapDispatchToProps = (dispatch) => ({
   requestAllRoutes: () => dispatch(requestAllRoutes()),

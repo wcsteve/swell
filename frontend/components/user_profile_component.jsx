@@ -1,30 +1,50 @@
 import React from "react";
 import UserProfileWidgetContainer from './workout/user_profile_widget_container'
 import WorkoutStatsWidgetContainer from './workout/workout_stats_widget_container'
-import WorkoutFeedContainer from './workout/workout_feed_container'
+import WorkoutFeedContainer from './workout/workout_feed_container';
+import Modal from './modal/modal'
 
-class UserProfileComponenet extends React.Component{
+class UserProfileComponent extends React.Component{
+  constructor(props){
+    super(props)
+
+  }
 
 
   render(){
 
+
     return (
       <main className='user-profile-page'>
-        <div className='user-profile-widget-container'>
-          <UserProfileWidgetContainer />
-        </div>
+        <Modal />
+        <aside className='profile-aside'>
 
-        <div className='workout-stats-widget'>
-          <WorkoutStatsWidgetContainer />
-        </div>
+          <div className='user-profile-widget-container'>
+            <UserProfileWidgetContainer />
+          </div>
 
-        <div className='workout-feed-container'>
+          <div className='workout-stats-widget'>
+          </div>
+
+        </aside>
+
+
+
+        <section className='workout-feed-container'>
           <WorkoutFeedContainer />
-        </div>
+        </section>
+
+        <aside className='profile-aside'>
+          <button onClick={() => this.props.openModal('workout')}>Create Workout</button>
+
+        </aside>
 
       </main>
     )
   }
 }
 
-export default UserProfileComponenet;
+export default UserProfileComponent;
+
+
+// <WorkoutStatsWidgetContainer />
