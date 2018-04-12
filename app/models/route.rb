@@ -20,6 +20,7 @@ class Route < ApplicationRecord
   :distance_unit, :duration, :elevation_gain, :polyline, presence: true
 
   belongs_to :user,
+    optional: true,
     foreign_key: :user_id,
     class_name: :User
 
@@ -28,3 +29,5 @@ class Route < ApplicationRecord
     class_name: :Workout
 
 end
+
+# dependent: :destroy,

@@ -24,6 +24,7 @@ class RouteMap extends React.Component{
     this.calcElevation = this.calcElevation.bind(this);
     this.addForm = this.addForm.bind(this);
     this.addBackLastMarker = this.addBackLastMarker.bind(this);
+    this.clearMarkers = this.clearMarkers.bind(this);
     this.state = {
       polyline: null,
       path: null,
@@ -59,6 +60,7 @@ class RouteMap extends React.Component{
       });
 
       this.markers.push(newMarker)
+      this.redo = [];
       if (this.markers.length > 1) {
         this.calcRoute()
       } else {
@@ -127,8 +129,6 @@ class RouteMap extends React.Component{
       duration: googleMapsRouteResponse.legs[0].duration.text,
       distance: (googleMapsRouteResponse.legs[0].distance.value / 1000.0).toFixed(2),
     })
-
-    console.log(this.state)
   }
 
   componentDidMount() {
@@ -136,7 +136,20 @@ class RouteMap extends React.Component{
   }
 
   centerMap(){
-    this.map.setCenter({ lat: 37.773972, lng: -122.431297 });
+    if (this.markers.length === 0) {
+      this.map.setCenter({ lat: 37.773972, lng: -122.431297 });
+      this.map.setZoom(13)
+    } else {
+      let lastMarker = this.markers[this.markers.length - 1]
+      this.map.setZoom(15)
+      this.map.setCenter(lastMarker.getPosition())
+    }
+  }
+
+  clearMarkers(){
+    for (let i = 0; i < this.markers.length; i++) {
+      this.marker[i].setMap(null);
+    }
   }
 
   removeLastMarker(){
@@ -147,6 +160,21 @@ class RouteMap extends React.Component{
       this.arrayLatLngs.splice(-1, 1);
       markerToDelete.setMap(null);
       this.calcRoute();
+    } else {
+      this.markers[this.markers.length - 1].setMap(null);
+      this.directionsResultRenderer.setMap(null);
+      this.markers =[]
+      this.centerMap()
+      this.directionsResultRenderer = new google.maps.DirectionsRenderer({
+        draggable: true
+      });
+      this.directionsResultRenderer.setMap(this.map)
+      this.polyline = null
+      this.setState({
+        duration: "--:--",
+        distance: "",
+        elevation: "",
+      }).then(() => null)
     }
   }
 
@@ -155,6 +183,7 @@ class RouteMap extends React.Component{
       this.markers.push(this.redo.pop())
       // markerToDelete.setMap(null);
       this.calcRoute();
+
     }
   }
 
@@ -171,7 +200,10 @@ class RouteMap extends React.Component{
     const center = Control(this.centerMap, "Center");
     const undo = Control(this.removeLastMarker, "Undo");
     const redo = Control(this.addBackLastMarker, "Redo");
-    const save = Control(() => this.addForm(true), "Save");
+    let save
+    if (this.markers.length >= 2) {
+      save = Control(() => this.addForm(true), "Save");
+    }
 
     let form = undefined
     if (this.state.form === true){
@@ -194,8 +226,8 @@ class RouteMap extends React.Component{
               {undo}
               {redo}
               {center}
-              {save}
               <div className="map-button" onClick={() => this.exitForm()}>Exit</div>
+              {save}
             </ul>
           </nav>
 

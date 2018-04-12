@@ -9,12 +9,14 @@ class RouteIndex extends React.Component{
   }
 
   render(){
+    const {requestAllWorkouts} = this.props
     const routes = (
         this.props.routes.map(singleRoute =>
           <RouteIndexItem
             route={singleRoute}
             delete={this.props.deleteRoute}
             key={singleRoute.id}
+            request={requestAllWorkouts}
             />
         )
     )

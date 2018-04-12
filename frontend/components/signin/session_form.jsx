@@ -13,6 +13,10 @@ class SessionForm extends React.Component {
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
   }
 
+  componentDidMount(){
+    this.props.receiveErrors([]);
+  }
+
   handleInput(field){
     return (e) => this.setState({ [field]: e.target.value});
   }
@@ -34,17 +38,6 @@ class SessionForm extends React.Component {
     })
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
 
   render(){
 
@@ -84,7 +77,18 @@ class SessionForm extends React.Component {
         onClick={this.handleDemoSubmit}/>
     }
 
-
+    let errors = <div></div>
+    if (this.props.errors.length >= 1){
+      errors = (
+        <ul className="session-errors">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      )
+    }
 
     return(
       <div className={this.props.formClass}>
@@ -92,7 +96,7 @@ class SessionForm extends React.Component {
 
         <form className="sessionform">
           {welcomeMessage}
-          {this.renderErrors()}
+          {errors}
           <fieldset className="session-fieldset">
 
               <input className="session-form-input user-input"

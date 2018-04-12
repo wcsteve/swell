@@ -17,3 +17,8 @@ export const selectUserWorkouts = (state) => {
   const userWorkouts = Object.values(state.entities.workouts)
   return userWorkouts;
 }
+
+export const selectDistance = (state) => {
+  const distance = Object.values(state.entities.workouts.routes.distance)
+  return distance;
+}

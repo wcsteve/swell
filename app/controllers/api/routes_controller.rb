@@ -38,10 +38,10 @@ class Api::RoutesController < ApplicationController
   end
 
   def destroy
-    # debugger
+    debugger
     @route = Route.find_by(id: params[:id])
     if @route
-      @route.destroy
+      @route.update(user_id: 0)
       render json: {}
     else
       render json: ["Route undeleteable ?!? Delete again?!"], status: 400

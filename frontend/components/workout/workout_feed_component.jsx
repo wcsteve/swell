@@ -11,8 +11,8 @@ class WorkoutFeedComponent extends React.Component{
 
 
   componentDidMount(){
-    this.props.requestWorkouts().then(this.props.requestAllRoutes())
-
+    this.props.requestWorkouts()
+    // .then(this.props.requestAllRoutes())
   }
 
 

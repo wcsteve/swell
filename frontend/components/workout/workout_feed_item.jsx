@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 class WorkoutFeedItem extends React.Component{
   constructor(props){
     super(props)
-    debugger
 
   }
 

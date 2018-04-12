@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, } from 'react-router-dom';
 import SignUpFormContainer from '../signin/signup_form_container';
 import SignInFormContainer from '../signin/signin_form_container';
+import { AuthRoute, ProtectedRoute } from '../../util/url_route_util';
 
 
 const HomePage = () => (
@@ -19,9 +20,9 @@ const HomePage = () => (
 const Splash = () => (
   <div className="Splash">
     <Switch>
-      <Route path='/signup' component={SignUpFormContainer} />
-      <Route path='/signin' component={SignInFormContainer} />
-      <Route path='/' component={HomePage} />
+      <AuthRoute path='/signup' component={SignUpFormContainer} />
+      <AuthRoute path='/signin' component={SignInFormContainer} />
+      <AuthRoute path='/' component={HomePage} />
     </Switch>
   </div>
 )

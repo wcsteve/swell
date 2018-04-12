@@ -108,12 +108,19 @@
     border-bottom: 1px solid #ccccd1;
     padding: 15px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: around;
 
     h1{
       font-weight: 300;
       font-size: 30px;
       padding-top: 5px;
+    }
+
+    .route-errors {
+      color: red;
+      margin: 15px;
+      padding-left: 120px;
     }
 
   }

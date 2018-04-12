@@ -48,7 +48,9 @@ export default class RouteIndexItem extends React.Component {
             <span>Est Moving Time </span>
             {this.route.duration}
           </div>
-          <button className="delete-route" onClick={() => this.props.delete(routeId)}>Delete</button>
+          <button
+            className="delete-route"
+            onClick={() => this.props.delete(routeId).then(() => this.props.request())}>Delete</button>
         </section>
 
         <footer className="route-timestamp-footer">

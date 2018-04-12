@@ -4,7 +4,8 @@ import CreateRouteFormComponent from './create_route_form_component';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  errors: state.errors.route
 })
 
 const mapDispatchToProps = (dispatch) => ({

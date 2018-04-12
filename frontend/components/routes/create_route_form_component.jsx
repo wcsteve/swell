@@ -11,7 +11,8 @@ class CreateRouteFormComponent extends React.Component{
     this.state = {
       title: '',
       description: '',
-      distance_unit: 'miles'
+      distance_unit: 'miles',
+      errors: undefined
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,13 +40,17 @@ class CreateRouteFormComponent extends React.Component{
 
     const save = FormControl(this.handleSubmit, "save");
     const cancel = FormControl(() => this.props.closeForm(null));
-
+    let errors;
+    if (this.props.errors){
+      errors = this.props.errors[0]
+    }
     return(
       <React.Fragment>
           <div className="map-form-container" onClick={e => e.stopPropagation()}>
               <header>
                 <div onClick={() => this.props.closeForm(null)} className="close-x">x</div>
                 <h1>Save</h1>
+                <p className='route-errors'>{errors}</p>
               </header>
               <form onSubmit={this.handleSubmit} className="map-form">
                 <p>

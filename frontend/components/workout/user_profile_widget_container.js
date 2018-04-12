@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { createRoute } from '../../actions/route_actions';
+import { requestAllWorkouts } from '../../actions/workout_actions';
 import UserProfileWidget from './user_profile_widget_component';
 import { withRouter } from 'react-router-dom';
 import {selectUserWorkouts} from '../../selectors/routes_selector';
