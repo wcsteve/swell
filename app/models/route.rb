@@ -16,7 +16,7 @@
 #
 
 class Route < ApplicationRecord
-  validates :user_id, :title, :description, :distance,
+  validates :title, :description, :distance,
   :distance_unit, :duration, :elevation_gain, :polyline, presence: true
 
   belongs_to :user,

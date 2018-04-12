@@ -17,6 +17,7 @@ class Workout < ApplicationRecord
   validates :user_id, :title, :route_id, :time, presence: true
   validates :workout_date, presence: true
 
+
   belongs_to :route,
     foreign_key: :route_id,
     class_name: :Route
@@ -24,7 +25,6 @@ class Workout < ApplicationRecord
   belongs_to :user,
     foreign_key: :user_id,
     class_name: :User
-
 
 
 end

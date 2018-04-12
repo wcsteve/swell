@@ -1,6 +1,6 @@
 import React from "react";
 import WorkoutFeedItem from './workout_feed_item';
-// import Modal from '../modal/modal'
+import Modal from '../modal/modal'
 
 class WorkoutFeedComponent extends React.Component{
   constructor(props){
@@ -30,20 +30,28 @@ class WorkoutFeedComponent extends React.Component{
               delete={this.props.deleteWorkout}
               key={workout.id}
               route={workout.route}
+              openModal={this.props.openModal}
+              requestWorkoutId={this.props.requestWorkoutId}
               />
           )
         )
       )
     }
 
+    let quote = 'Winning is about heart, not just legs. It\'s got to be in the right place.'
+
     return (
       <React.Fragment>
+        <Modal />
         <header className='feed-header'> </header>
         <summary>
           <div className="feed-background"></div>
           <main>
-            <h3></h3>
-            <p></p>
+            <h3 className='feed-summary-header'>Harder Faster Stronger</h3>
+            <p className='quote'>{quote}</p>
+            <button className="create-workout-button"
+              onClick={() => this.props.openModal('workout')}>Add Workout
+            </button>
           </main>
         </summary>
 
@@ -66,8 +74,3 @@ export default WorkoutFeedComponent;
 
 
 // <Modal />
-
-
-// <button className="create-workout-button"
-//   onClick={() => this.props.openModal('workout')}>Add Workout
-// </button>

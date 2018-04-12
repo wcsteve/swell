@@ -16,7 +16,6 @@ class UserProfileComponent extends React.Component{
 
     return (
       <main className='user-profile-page'>
-        <Modal />
         <aside className='profile-aside'>
 
           <div className='user-profile-widget-container'>
@@ -36,9 +35,7 @@ class UserProfileComponent extends React.Component{
 
         <aside className='profile-aside'>
 
-          <button className="create-workout-button"
-                  onClick={() => this.props.openModal('workout')}>Add Workout
-          </button>
+
         </aside>
 
       </main>

@@ -1,28 +1,38 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import Modal from '../modal/modal'
 
 class WorkoutFeedItem extends React.Component{
   constructor(props){
     super(props)
+    this.openForm = this.openForm.bind(this);
 
   }
 
+  openForm(form){
+    this.props.requestWorkoutId(this.props.workout.id);
+    this.props.openModal(form);
+
+  }
 
   render(){
-
 
     let distance, elevation, duration;
     if (this.props.workout.route){
       elevation = this.props.workout.route.elevation_gain
-      duration = this.props.workout.route.duration
+      duration = this.props.workout.time
       distance = this.props.workout.route.distance
     }
+    const workoutDate = new Date (this.props.workout.workoutDate).toLocaleString().split(',')[0]
+    let workoutTime = `${this.props.workout.workoutTimeHours}hr ${this.props.workout.workoutTimeMinutes}min`
+
+
 
     return (
 
       <React.Fragment>
+        <Modal />
         <li className="card">
-
 
           <header className="item-feed-header">
 
@@ -30,7 +40,7 @@ class WorkoutFeedItem extends React.Component{
 
             <section className="feed-workout-title">
               <Link to={`/users`}className="entry-username">{this.props.username}</Link>
-              <time className="feed-time">{this.props.workout.workoutDate}</time>
+              <time className="feed-time">{workoutDate}</time>
             </section>
 
           </header>
@@ -46,7 +56,7 @@ class WorkoutFeedItem extends React.Component{
               <ul className="stat-ul">
                 <li>
                   <span>Moving Time</span>
-                  <b>{duration}</b>
+                  <b>{workoutTime}</b>
                 </li>
 
                 <li className="middle-stat">
@@ -65,7 +75,19 @@ class WorkoutFeedItem extends React.Component{
           </main>
 
           <footer className="feed-item-footer">
-            <button onClick={()=> this.props.delete(this.props.workout.id)}>Delete</button>
+            <ul>
+              <li>
+                <button onClick={()=> this.props.delete(this.props.workout.id)}>Delete</button>
+              </li>
+
+              <li>
+                <button onClick={()=> this.openForm("editWorkout")}>Edit</button>
+              </li>
+
+              <li>
+                <button onClick={()=> this.props.requestWorkoutId(this.props.workout.id)}>Track Me</button>
+              </li>
+            </ul>
           </footer>
 
 

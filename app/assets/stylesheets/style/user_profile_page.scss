@@ -17,6 +17,10 @@
       flex-direction: column;
       box-sizing: border-box;
 
+      select{
+        font-size: 14px;
+      }
+      
       header{
         // width: 600px;
         height: 70px;
@@ -51,6 +55,29 @@
           color: #606065;
         }
 
+        .workout-time-input{
+          justify-content: center;
+          display: flex;
+          flex-direction: row;
+          height: 52px;
+          justify-content: flex-start;
+
+          input {
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 14px;
+            height: 34px;
+            background-color: #fff;
+            border: 1px solid #ccccd1;
+            color: #666;
+            line-height: 1.4em;
+            vertical-align: baseline;
+            border-radius: 0px;
+            width: 100px;
+            margin-right: 25px;
+            align-items: center;
+          }
+        }
         .workout-input{
           height: 52px;
           // width: 600px;

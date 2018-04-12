@@ -25,7 +25,6 @@ class Api::WorkoutsController < ApplicationController
     if @workout.save
       render :show
     else
-      debugger
       render json: @workout.errors.full_messages, status: 404
     end
   end
@@ -35,7 +34,6 @@ class Api::WorkoutsController < ApplicationController
     if params[:workout_date]
       @workout.workout_date = Date.parse(params[:workout_date])
     end
-
     if @workout.update(workout_params)
       render :show
     else
@@ -56,7 +54,8 @@ class Api::WorkoutsController < ApplicationController
 
   def workout_params
     params.require(:workout).permit(
-      :user_id, :title, :route_id, :activity_type, :time, :workout_date
+      :user_id, :title, :route_id, :activity_type, :time, :workout_date, :workout_time_hours,
+      :workout_time_minutes
     )
   end
 

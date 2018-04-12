@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410013040) do
+ActiveRecord::Schema.define(version: 20180412210421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "routes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "title", null: false
     t.text "description", null: false
     t.float "distance", null: false
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20180410013040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "workout_date", null: false
+    t.string "workout_time_hours", null: false
+    t.string "workout_time_minutes", null: false
     t.index ["user_id", "title"], name: "index_workouts_on_user_id_and_title", unique: true
   end
 

@@ -7,12 +7,16 @@ class WorkOutFormComponent extends React.Component{
     super(props)
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSelectChange = this.handleSelectChange.bind(this)
+    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleTimeInput = this.handleTimeInput.bind(this);
+    this.computeTime = this.computeTime.bind(this);
     this.state = {
       title: '',
       workout_date: '',
-      time: '',
+      time: '---',
       route_id: '',
+      workout_time_hours: '',
+      workout_time_minutes: ''
     }
   }
 
@@ -21,6 +25,18 @@ class WorkOutFormComponent extends React.Component{
   }
 
   handleInput(field){
+    return (e) => this.setState({[field]: e.target.value})
+  }
+
+  computeTime(){
+    if(this.state.workout_time_hours === '') {
+      this.setState({time: `${this.state.workout_time_minutes} min`})
+    } else {
+      this.setState({time: `${this.state.workout_time_hours} hours ${this.state.workout_time_minutes} min`})
+    }
+  }
+
+  handleTimeInput(field){
     return (e) => this.setState({[field]: e.target.value})
   }
 
@@ -38,7 +54,7 @@ class WorkOutFormComponent extends React.Component{
     const dataListOptions = this.props.routes.map(
       (route) => <option
                     key={route.id}
-                    value={route.id}>{route.title}
+                    value={route.id}>{`${route.title} ---- ${route.distance}mi`}
                  </option>
     )
 
@@ -57,7 +73,6 @@ class WorkOutFormComponent extends React.Component{
 
               <input
                 type="text"
-                id="route-modal-title"
                 onChange={this.handleInput('title')}
                 placeholder="Title (required)"
                 />
@@ -67,21 +82,24 @@ class WorkOutFormComponent extends React.Component{
 
               <input
                 type="date"
-                id="route-modal-title"
                 onChange={this.handleInput('workout_date')}
                 placeholder="Date"
                 />
             </section>
 
-            <section className="workout-input">
+            <section className="workout-time-input">
 
               <input
-                type="time"
-                className="without"
-                id="route-modal-title"
-                onChange={this.handleInput('time')}
-                placeholder="Time"
+                type="number"
+                onChange={this.handleTimeInput('workout_time_hours')}
+                placeholder="Hours"
                 />
+
+                <input
+                  type="number"
+                  onChange={this.handleTimeInput('workout_time_minutes')}
+                  placeholder="Minutes"
+                  />
             </section>
 
 
@@ -118,6 +136,10 @@ class WorkOutFormComponent extends React.Component{
   }
 }
 
-
+// id="route-modal-title"
+//
+// id="route-modal-title"
+//
+// id="route-modal-title"
 
 export default WorkOutFormComponent;

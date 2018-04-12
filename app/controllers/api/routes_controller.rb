@@ -41,7 +41,7 @@ class Api::RoutesController < ApplicationController
     debugger
     @route = Route.find_by(id: params[:id])
     if @route
-      @route.update(user_id: 0)
+      @route.update(user_id: nil)
       render json: {}
     else
       render json: ["Route undeleteable ?!? Delete again?!"], status: 400
