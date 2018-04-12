@@ -35,8 +35,10 @@ class UserProfileComponent extends React.Component{
         </section>
 
         <aside className='profile-aside'>
-          <button onClick={() => this.props.openModal('workout')}>Create Workout</button>
 
+          <button className="create-workout-button"
+                  onClick={() => this.props.openModal('workout')}>Add Workout
+          </button>
         </aside>
 
       </main>

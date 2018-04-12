@@ -19,7 +19,6 @@ import WorkoutShowContainer from '../workout/workout_show_container';
 const Main = () => (
   <div className="Main-Content">
     <Switch>
-      <ProtectedRoute exact path="/user" component={User} />
       <ProtectedRoute exact path="/users" component={UserProfileContainer} />
       <ProtectedRoute exact path="/routes" component={RouteIndexContainer} />
       <ProtectedRoute exact path="/routes/new" component={RouteMapContainer} />

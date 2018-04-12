@@ -11,8 +11,8 @@ class WorkOutFormComponent extends React.Component{
     this.state = {
       title: '',
       workout_date: '',
-      time: null,
-      route_id: null,
+      time: '',
+      route_id: '',
     }
   }
 
@@ -30,7 +30,7 @@ class WorkOutFormComponent extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.processForm(this.state)
+    this.props.processForm(this.state).then(this.props.closeModal);
   }
 
   render(){

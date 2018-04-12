@@ -21,6 +21,14 @@
     width: 592px;
     height: 304px;
     margin-bottom: 12px;
+
+    .feed-background{
+      background: image-url("landscape-horizon-mountain-black-and-white-track-road-19606-pxhere.com");
+      // background-position: calc(100% - 20px) calc(100% - 10px);
+      background-size: cover;
+      height: 148px;
+      background-size: 590px 230px;
+    }
   }
 
   .feed-list{
@@ -168,4 +176,33 @@
     margin-right: 24px;
     margin-left: 24px;
   }
+
+  .create-route-button{
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    background-color: #fc4c02;
+    width: 117px;
+    height: 18px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+  }
+
+}
+.create-workout-button{
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  background-color: #fc4c02;
+  width: 117px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.create-workout-button:hover{
+  color: #ffffff;
+background-color: #c93d02;
+border-color: #bf3a02
 }

@@ -18,8 +18,8 @@ const mapStateToProps = (state, ownprops) => {
   return ({
     currentUser: state.session.currentUser,
     workoutsTotal: workouts.length,
-    distanceTotal: distanceRan,
-    evelationTotal: feetClimbed,
+    distanceTotal: distanceRan.toFixed(2),
+    evelationTotal: feetClimbed.toFixed(2),
     lastActivity: workouts[workouts.length - 1]
   })
 }

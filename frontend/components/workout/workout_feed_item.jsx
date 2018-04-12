@@ -4,11 +4,21 @@ import { Link } from 'react-router-dom'
 class WorkoutFeedItem extends React.Component{
   constructor(props){
     super(props)
+    debugger
 
   }
+
+
   render(){
 
-    const {workout, username} = this.props
+
+    let distance, elevation, duration;
+    if (this.props.workout.route){
+      elevation = this.props.workout.route.elevation_gain
+      duration = this.props.workout.route.duration
+      distance = this.props.workout.route.distance
+    }
+
     return (
 
       <React.Fragment>
@@ -37,17 +47,17 @@ class WorkoutFeedItem extends React.Component{
               <ul className="stat-ul">
                 <li>
                   <span>Moving Time</span>
-                  <b>{this.props.workout.route.duration}</b>
+                  <b>{duration}</b>
                 </li>
 
                 <li className="middle-stat">
                   <span>Distance</span>
-                  <b>{this.props.workout.route.distance} mi</b>
+                  <b>{distance} mi</b>
                 </li>
 
                 <li>
                   <span>Elevation Gain</span>
-                  <b>{this.props.workout.route.elevation_gain} ft</b>
+                  <b>{elevation} ft</b>
                 </li>
 
 

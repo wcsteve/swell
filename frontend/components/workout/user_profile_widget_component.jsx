@@ -57,7 +57,7 @@ class UserProfileWidget extends React.Component{
           <section className="training-log-link">
             <Link to={`/routes`}>Your Training Log
             </Link>
-            <i class="fas fa-caret-right"></i>
+            <i className="fas fa-caret-right"></i>
           </section>
         </footer>
       </React.Fragment>

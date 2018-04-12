@@ -37,6 +37,12 @@
     line-height: 38px;
     width: 80px;
   }
+
+  .map-button:hover{
+    transition-delay: 20ms;
+    background-color: #F7F7F7;
+    color: #000;
+  }
   ul{
     display: flex;
     flex-direction: row;
@@ -219,6 +225,11 @@
   border-radius: 2px;
 }
 
+.form-save:hover{
+  background-color: #45454d;
+  border-color: #45454d;
+}
+
 .form-cancel{
   border: 1px solid #ccccd1;
   width: 78px;
@@ -229,4 +240,8 @@
   padding: 10px 16px;
   text-align: center;
   border-radius: 2px;
+}
+
+.form-cancel:hover{
+  background-color: #f5f5fa;
 }

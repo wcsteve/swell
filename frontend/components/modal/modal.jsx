@@ -2,7 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import WorkOutFormContainer from '../workout/workout_form_container';
-import EditWorkoutFormContainer from '../workout/edit_workout_container';
+// import EditWorkoutFormContainer from '../workout/edit_workout_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -12,8 +12,6 @@ function Modal({modal, closeModal}) {
   switch (modal) {
     case 'workout':
       component = <WorkOutFormContainer />;
-    // case 'editWorkout':
-    //   component = <EditWorkoutFormContainer />;
       break;
     default:
       return null;
