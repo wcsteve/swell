@@ -1,24 +1,12 @@
-# README
+# Swell
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Swell](https://swell-.herokuapp.com/#/)
 
-Things you may want to cover:
 
-* Ruby version
+Swell is a Strave inspired map making, fitness tracking, one-stop shop app for atheletes looking to track and complete their fitness gaols.  
 
-* System dependencies
+Here are a few of the current features:
 
-* Configuration
+## Creating Routes
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Users can dynamically create Google mapped routes for their favorite tra
