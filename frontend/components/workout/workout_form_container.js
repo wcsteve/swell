@@ -9,7 +9,8 @@ import { selectUserRoutes } from "../../selectors/routes_selector";
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser,
   formType: 'workout',
-  routes: selectUserRoutes(state)
+  routes: selectUserRoutes(state),
+  errors: state.errors.workout
 })
 
 const mapDispatchToProps = (dispatch) => ({

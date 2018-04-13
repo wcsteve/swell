@@ -55,7 +55,7 @@ class UserProfileWidget extends React.Component{
             </div>
           </section>
           <section className="training-log-link">
-            <Link to={`/routes`}>Your Training Log
+            <Link to={`/training`}>Your Training Log
             </Link>
             <i className="fas fa-caret-right"></i>
           </section>

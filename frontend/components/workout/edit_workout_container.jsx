@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
   const workoutId = state.ui.workout[0]
   const workout = state.entities.workouts[workoutId]
   const routes = selectUserRoutes(state)
-  return { workout, formType, routes, workoutId };
+  const errors = state.errors.workout
+  return { workout, formType, routes, workoutId, errors};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -93,6 +94,19 @@ class EditWorkoutFormComponent extends React.Component{
                  </option>
     )
 
+    let errors;
+    if (this.props.errors.length >= 1){
+      errors = (
+        <ul className="workout-form-errors">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
     return(
       <React.Fragment>
         <div className="workout-form-container">
@@ -166,7 +180,7 @@ class EditWorkoutFormComponent extends React.Component{
               <input type="submit" value="Save" className="form-save"/>
 
             </nav>
-
+            <div>{errors}</div>
           </form>
 
           </div>

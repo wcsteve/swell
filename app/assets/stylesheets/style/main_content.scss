@@ -5,6 +5,14 @@
   justify-content: center;
 }
 
+.training-construction {
+  width: 100%;
+  background-color: #f5f5fa;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 55px);
+}
+
 .Splash {
   height: calc(100vh - 55px);
   background-size: cover;

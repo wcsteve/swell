@@ -8,6 +8,7 @@ import Splash from './splash';
 import RouteIndexContainer from '../routes/route_index_container';
 import RouteMapContainer from '../routes/route_map_container';
 import UserProfileContainer from '../user_profile_container';
+import TrainingConstruction from '../training_stats/training_construction';
 
 
 const Main = () => (
@@ -16,6 +17,7 @@ const Main = () => (
       <ProtectedRoute exact path="/users" component={UserProfileContainer} />
       <ProtectedRoute exact path="/routes" component={RouteIndexContainer} />
       <ProtectedRoute exact path="/routes/new" component={RouteMapContainer} />
+      <ProtectedRoute exact path="/training" component={TrainingConstruction} />
       <AuthRoute path="/" component={Splash} />
     </Switch>
   </div>

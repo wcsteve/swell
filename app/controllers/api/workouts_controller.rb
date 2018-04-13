@@ -21,7 +21,8 @@ class Api::WorkoutsController < ApplicationController
   def create
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
-    @workout.workout_date = Date.parse(workout_params[:workout_date])
+    # debugger
+    @workout.workout_date = Date.parse(workout_params[:workout_date]) unless workout_params[:workout_date].empty?
 
     if @workout.save
       render :show

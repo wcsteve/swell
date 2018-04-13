@@ -9,7 +9,7 @@ const NavBar = () => (
     </li>
 
     <li className="SessionButton">
-      <NavLink to="/workouts">Training</NavLink>
+      <NavLink to="/training">Training</NavLink>
     </li>
 
     <li className="SessionButton">

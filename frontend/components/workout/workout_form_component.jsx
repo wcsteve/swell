@@ -16,7 +16,8 @@ class WorkOutFormComponent extends React.Component{
       time: '---',
       route_id: '',
       workout_time_hours: '0',
-      workout_time_minutes: '0'
+      workout_time_minutes: '0',
+      errors: undefined
     }
   }
 
@@ -50,13 +51,26 @@ class WorkOutFormComponent extends React.Component{
   }
 
   render(){
-
+    if (!this.props.routes) return null;
     const dataListOptions = this.props.routes.map(
       (route) => <option
                     key={route.id}
                     value={route.id}>{`${route.title} ---- ${route.distance}mi`}
                  </option>
     )
+
+    let errors;
+    if (this.props.errors.length >= 1){
+      errors = (
+        <ul className="workout-form-errors">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      )
+    }
 
     return(
       <React.Fragment>
@@ -65,6 +79,7 @@ class WorkOutFormComponent extends React.Component{
           <header>
             <div onClick={this.props.closeModal} className="close-x">x</div>
             <h1>Save</h1>
+
           </header>
 
           <form onSubmit={this.handleSubmit} className="workout-form">
@@ -129,7 +144,7 @@ class WorkOutFormComponent extends React.Component{
               <input type="submit" value="Save" className="form-save"/>
 
             </nav>
-
+            <div>{errors}</div>
           </form>
 
           </div>

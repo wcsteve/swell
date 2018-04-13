@@ -11,11 +11,27 @@
 
     .workout-form-container{
       width: 389px;
-      height: 400px;
+      // height: 400px;
       background: #EEEEEE;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
+
+      .workout-form-errors{
+        margin-top: 20px;
+        box-sizing: border-box;
+        color: #fff;
+        max-width: 1248px;
+        margin: 0 auto;
+        padding: 5px;
+        position: relative;
+        background: #d9534f;
+        text-align: center;
+      }
+
+      .form-button-bar{
+        margin-bottom: 10px;
+      }
 
       select{
         font-size: 14px;
@@ -106,7 +122,6 @@
 }
 
 .profile-aside{
-  border: 1px solid black;
   width: 311.5px;
   padding: 0px 16px;
   height: 981px;
