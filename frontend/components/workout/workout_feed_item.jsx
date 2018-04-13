@@ -25,8 +25,6 @@ class WorkoutFeedItem extends React.Component{
     }
     const jsDate = new Date (this.props.workout.workoutDate)
     const workoutDate = jsDate.toUTCString().split('00:00:00 GMT').join(' ')
-    console.log(workoutDate)
-    console.log(this.props.workout.workoutDate)
     let workoutTime = `${this.props.workout.workoutTimeHours}hr ${this.props.workout.workoutTimeMinutes}min`
 
 
@@ -103,5 +101,3 @@ class WorkoutFeedItem extends React.Component{
   }
 
 export default WorkoutFeedItem;
-
-  // <a className="entry-username">{this.props.username}</a>

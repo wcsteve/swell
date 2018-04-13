@@ -12,7 +12,6 @@ class WorkoutFeedComponent extends React.Component{
 
   componentDidMount(){
     this.props.requestWorkouts()
-    // .then(this.props.requestAllRoutes())
   }
 
 
@@ -21,10 +20,8 @@ class WorkoutFeedComponent extends React.Component{
     let workoutArr = this.props.userWorkouts.sort(function(a, b) {
       let dayOne = new Date(a.workoutDate)
       let dayTwo = new Date(b.workoutDate)
-      debugger
       return dayTwo - dayOne;
     });
-    console.log(workoutArr)
     let workouts;
     if (this.props.userWorkouts){
       workouts = (

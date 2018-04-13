@@ -38,7 +38,6 @@ class Api::RoutesController < ApplicationController
   end
 
   def destroy
-    debugger
     @route = Route.find_by(id: params[:id])
     if @route
       @route.update(user_id: nil)

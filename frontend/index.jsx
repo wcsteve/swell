@@ -2,12 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {requestAllWorkouts,
-requestSingleWorkout,
-createWorkout,
-updateWorkout,
-deleteWorkout} from './actions/workout_actions';
-import {receiveSingleUiStat} from './actions/ui_stat_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -19,17 +13,5 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.receiveSingleUiStat = receiveSingleUiStat
-  window.requestAllWorkouts = requestAllWorkouts;
-  window.requestSingleWorkout = requestSingleWorkout;
-  window.createWorkout = createWorkout;
-  window.updateWorkout = updateWorkout;
-  window.deleteWorkout = deleteWorkout;
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
   ReactDOM.render(<Root store={ store } />, root);
 })
-
-
-
-//for testing purposes

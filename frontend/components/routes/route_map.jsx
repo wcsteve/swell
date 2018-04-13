@@ -250,6 +250,3 @@ class RouteMap extends React.Component{
 }
 
 export default RouteMap;
-// ideas to implement:
-//   DirectionsResult
-//   optimizeWaypoints: true
