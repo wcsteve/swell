@@ -22,6 +22,7 @@ class Api::WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     @workout.workout_date = Date.parse(workout_params[:workout_date])
+
     if @workout.save
       render :show
     else

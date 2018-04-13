@@ -17,11 +17,18 @@ class WorkoutFeedComponent extends React.Component{
 
 
   render(){
-
+    if (!this.props.userWorkouts) return null
+    let workoutArr = this.props.userWorkouts.sort(function(a, b) {
+      let dayOne = new Date(a.workoutDate)
+      let dayTwo = new Date(b.workoutDate)
+      debugger
+      return dayTwo - dayOne;
+    });
+    console.log(workoutArr)
     let workouts;
     if (this.props.userWorkouts){
       workouts = (
-        this.props.userWorkouts.map(
+        workoutArr.map(
           (workout) => (
             <WorkoutFeedItem
               username={this.props.currentUser.username}

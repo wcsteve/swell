@@ -1,12 +1,4 @@
 
-// export const selectUserRoutes = (routes, userId) => {
-//   const userRoutes = Object.keys(routes).map((routeId), function(routeId) {
-//     if (routes[routeId].user_id === userId) {
-//       return routes[routeId];
-//     }
-//   })
-//   return userRoutes;
-// }
 
 export const selectUserRoutes = (state) => {
   const userRoutes = Object.values(state.entities.routes)
@@ -21,4 +13,24 @@ export const selectUserWorkouts = (state) => {
 export const selectDistance = (state) => {
   const distance = Object.values(state.entities.workouts.routes.distance)
   return distance;
+}
+
+function includedInLastWeek(workout, lastSunday) {
+  let workoutDate = new Date(workout.workout_date)
+  return (workoutDate > lastSunday)
+}
+
+function getLastSunday(){
+  let today = new Date();
+  today.setDate(today.getDate() - today.getDay());
+  return today;
+}
+
+export const selectLastWeekWorkouts = (state) => {
+  let workoutArray = selectUserWorkouts(state)
+  let lastSunday = getLastSunday()
+  const lastWorkouts = workoutArray.filter(
+    (workout) => includedInLastWeek(workout, lastSunday));
+
+  return lastWorkouts;
 }
