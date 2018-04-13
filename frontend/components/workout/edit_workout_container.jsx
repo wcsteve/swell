@@ -157,7 +157,7 @@ class EditWorkoutFormComponent extends React.Component{
 
 
             <select value={this.state.value} onChange={this.handleSelectChange}>
-               <option value="" selected disabled hidden>Select Route</option>
+              <option value={this.state.route_id} selected>{this.state.title}</option>
               {dataListOptions}
             </select>
 

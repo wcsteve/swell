@@ -23,9 +23,19 @@ class WorkoutFeedItem extends React.Component{
       duration = this.props.workout.time
       distance = this.props.workout.route.distance
     }
-    const jsDate = new Date (this.props.workout.workoutDate)
-    const workoutDate = jsDate.toUTCString().split('00:00:00 GMT').join(' ')
-    let workoutTime = `${this.props.workout.workoutTimeHours}hr ${this.props.workout.workoutTimeMinutes}min`
+    const jsDate = new Date (this.props.workout.workoutDate);
+    const workoutDate = jsDate.toUTCString().split('00:00:00 GMT').join(' ');
+    let hour = ''
+    if (parseInt(this.props.workout.workoutTimeHours) !== 0 && this.props.workout.workoutTimeHours !== ''){
+      hour = `${this.props.workout.workoutTimeHours}hr`
+    }
+
+    let minute = ''
+    if (parseInt(this.props.workout.workoutTimeMinutes) !== 0) {
+      minute = `${this.props.workout.workoutTimeMinutes}min`
+    }
+
+    let workoutTime = `${hour} ${minute}`
 
 
 

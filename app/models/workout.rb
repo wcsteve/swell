@@ -16,6 +16,7 @@
 class Workout < ApplicationRecord
   validates :user_id, :title, :route_id, :time, presence: true
   validates :workout_date, presence: true
+  validates :title, uniqueness: { scope: :user_id }
 
 
   belongs_to :route,

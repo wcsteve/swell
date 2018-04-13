@@ -18,6 +18,7 @@
 class Route < ApplicationRecord
   validates :title, :description, :distance,
   :distance_unit, :duration, :elevation_gain, :polyline, presence: true
+  validates :title, uniqueness: { scope: :user_id }
 
   belongs_to :user,
     optional: true,
