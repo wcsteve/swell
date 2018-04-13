@@ -86,7 +86,6 @@ class WorkoutFeedItem extends React.Component{
               </li>
 
               <li>
-                <button onClick={()=> this.props.requestWorkoutId(this.props.workout.id)}>Track Me</button>
               </li>
             </ul>
           </footer>
@@ -101,3 +100,8 @@ class WorkoutFeedItem extends React.Component{
   }
 
 export default WorkoutFeedItem;
+
+
+
+
+// <button onClick={()=> this.props.requestWorkoutId(this.props.workout.id)}>Track Me</button>

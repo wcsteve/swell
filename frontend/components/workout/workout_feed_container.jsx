@@ -4,6 +4,7 @@ import { requestAllWorkouts, deleteWorkout, updateWorkout } from '../../actions/
 import { selectUserWorkouts } from "../../selectors/routes_selector";
 import { requestAllRoutes } from "../../actions/route_actions"
 import { openModal } from '../../actions/modal_actions';
+import {receiveSingleUiStat} from '../../actions/ui_stat_actions'
 
 
 const mapStateToProps = (state) => {
