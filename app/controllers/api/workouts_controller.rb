@@ -54,6 +54,16 @@ class Api::WorkoutsController < ApplicationController
     end
   end
 
+  def stats
+    week = params[:week]
+    today = DateTime.now
+    last_sunday = today - today.wday
+    start_date = last_sunday - (7 * params)
+    end_date = last_sunday - (7 * (params - 1))
+
+    @stats = Workout.all
+  end 
+
   def workout_params
     params.require(:workout).permit(
       :user_id, :title, :route_id, :activity_type, :time, :workout_date, :workout_time_hours,

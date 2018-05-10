@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resources :routes, only: [:index, :show, :create, :update, :destroy]
     resources :workouts, only: [:index, :show, :create, :update, :destroy]
-    resources :stats, only: [:show]
+    resources :workouts do
+      get 'stats', on: :collection
+    end
   end
 
   root "static_pages#root"
