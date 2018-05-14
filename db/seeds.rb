@@ -128,6 +128,98 @@ elevation_gain: "113.57",
 polyline: '}jveFnaojVT|@_@FIDKTK\UdAWlBEh@H~BBJSf@_BhDi@pA\jCB`@?XRF\J`Aj@xBjAvA|@p@t@j@n@TPb@TpA`@fAl@z@p@TPBG@CHCn@Ah@Eh@KnAc@fA_@VKVSxAqAx@o@b@UTGX@d@D\Hn@b@~A`B^b@PHb@DZEf@Ob@Y^a@hAsBxByCz@]d@[HMHa@BUS{AW}@{A}CKw@DwC?e@G[g@gA_@eAGm@Cs@Gs@w@mBQi@G_@A_@B_@FWHSBEDKKQWSSIc@@]FYNc@BKGMO[s@q@qAY_@yBmBUI]?WNKTQlAO`AQp@Q\MHYHa@Da@?[Is@e@e@a@MYCMuAR_@LONg@|ACDMDEDGRK|@AdB?d@GN]\a@P_@DuABOHELAbA]@?BVjCDn@u@PYqCUoBGYGKBMh@mA'
 )
 
+today = DateTime.now
+date = today - today.wday + 7
+
+Workout.create!(
+  user_id: user1.id,
+title: "First Run of the Week",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 1,
+workout_time_hours: "0",
+workout_time_minutes: "30"
+)
+
+Workout.create!(
+  user_id: user1.id,
+title: "Second Run of the Week",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 2,
+workout_time_hours: "0",
+workout_time_minutes: "27"
+)
+
+Workout.create!(
+  user_id: user1.id,
+title: "Race training #3",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 3,
+workout_time_hours: "0",
+workout_time_minutes: "40"
+)
+
+Workout.create!(
+  user_id: user1.id,
+title: "Race training mid-week",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 4,
+workout_time_hours: "0",
+workout_time_minutes: "23"
+)
+
+Workout.create!(
+  user_id: user1.id,
+title: "Hitting it hard!",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 5,
+workout_time_hours: "0",
+workout_time_minutes: "28"
+)
+
+Workout.create!(
+  user_id: user1.id,
+title: "Post-lunch run",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 6,
+workout_time_hours: "0",
+workout_time_minutes: "33"
+)
+
+Workout.create!(
+  user_id: user1.id,
+title: "Cool down jog",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 7,
+workout_time_hours: "0",
+workout_time_minutes: "50"
+)
+
+Workout.create!(
+  user_id: user1.id,
+title: "Race Day!!",
+route_id: route1.id,
+activity_type: "run",
+time: "---",
+workout_date: date - 1,
+workout_time_hours: "0",
+workout_time_minutes: "29"
+)
+
+
 Workout.create!(
   user_id: user1.id,
 title: "Beautiful Beach Day",
