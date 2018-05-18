@@ -1,19 +1,25 @@
 import React from 'react';
+import { WeeklyTotalGraph, AnnualStatsTotal } from './weekly_total_graph'
 
-class TrainingConstruction extends React.Component{
+class TrainingOverview extends React.Component{
 
   render() {
 
     return (
-      <main className="training-construction">
-        <div>
+      <main className="stats-main-page">
           <h1>
-            Feature forthcoming!
+            Training Calendar
           </h1>
-        </div>
+          <h2>
+            Year (2018)
+          </h2>
+          <header>
+            <WeeklyTotalGraph/>
+            <AnnualStatsTotal/>
+          </header>
       </main>
     )
   }
 }
 
-export default TrainingConstruction;
+export default TrainingOverview;

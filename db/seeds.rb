@@ -226,7 +226,7 @@ title: "Beautiful Beach Day",
 route_id: route1.id,
 activity_type: "run",
 time: "---",
-workout_date: "2018-03-09",
+workout_date: date - 11,
 workout_time_hours: "0",
 workout_time_minutes: "35"
 )
@@ -237,7 +237,7 @@ Workout.create!(
   route_id: route1.id,
   activity_type: "run",
   time: "---",
-  workout_date: "2018-03-08",
+  workout_date: date - 12,
   workout_time_hours: "1",
   workout_time_minutes: "7"
 )
@@ -248,7 +248,7 @@ title: "Mountain Run",
 route_id: route2.id,
 activity_type: "run",
 time: "---",
-workout_date: "2018-04-01",
+workout_date: date - 14,
 id: 19,
 workout_time_hours: "1",
 workout_time_minutes: "26"
@@ -260,7 +260,7 @@ title: "Today's a new Day",
 route_id: route3.id,
 activity_type: "run",
 time: "---",
-workout_date: "2018-04-05",
+workout_date: date - 15,
 id: 20,
 workout_time_hours: "",
 workout_time_minutes: "56"
@@ -272,7 +272,7 @@ Workout.create!(
   route_id: route4.id,
   activity_type: "run",
   time: "---",
-  workout_date: "2018-03-12",
+  workout_date: date - 16,
   workout_time_hours: "2",
   workout_time_minutes: "9"
 )
@@ -283,7 +283,7 @@ Workout.create!(
   route_id: route5.id,
   activity_type: "run",
   time: "---",
-  workout_date: "2018-03-22",
+  workout_date: date - 17,
   workout_time_hours: "2",
   workout_time_minutes: "38"
 )
@@ -294,7 +294,7 @@ Workout.create!(
   route_id: route6.id,
   activity_type: "run",
   time: "---",
-  workout_date: "2018-04-13",
+  workout_date: date - 18,
   workout_time_hours: "1",
   workout_time_minutes: "25"
 )
@@ -305,7 +305,7 @@ Workout.create!(
   route_id: route7.id,
   activity_type: "run",
   time: "---",
-  workout_date: "2018-03-15",
+  workout_date: date - 19,
   workout_time_hours: "1",
   workout_time_minutes: "41"
 )
@@ -316,7 +316,7 @@ title: "6 bullets",
 route_id: route8.id,
 activity_type: "run",
 time: "---",
-workout_date: "2018-03-05",
+workout_date: date - 20,
 workout_time_hours: "3",
 workout_time_minutes: "22"
 )
@@ -327,7 +327,7 @@ Workout.create!(
   route_id: route9.id,
   activity_type: "run",
   time: "---",
-  workout_date: "2018-03-05",
+  workout_date: date - 3,
   workout_time_hours: "2",
   workout_time_minutes: "23"
 )
