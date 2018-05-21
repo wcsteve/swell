@@ -1,38 +1,81 @@
 .stats-main-page {
+  // display: flex;
+  // flex-direction: column;
+  // background-color: #ffffff;
+  // width: 100%;
+  // height: 100%;
+  // align-items: flex-start;
+  // box-sizing: border-box;
+  // padding-bottom: 80px;
+  // padding-top: 30px;
+  // margin-left: auto;
+  // margin-right: auto;
+  // padding-left: 96px;
+  // padding-right: 96px;
   display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  width: 100%;
-  height: 100%;
-  align-items: flex-start;
-  box-sizing: border-box;
-  padding-bottom: 80px;
-  padding-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 96px;
-  padding-right: 96px;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    width: 100%;
+    // height: 100vh;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
 
-  h1 {
-    font-weight: 300;
-    font-size: 30px;
-    letter-spacing: -0.01em;
-    color: #2d2d32;
-    margin-bottom: 30px;
-  }
 
   .month-stats-header {
     box-sizing: border-box;
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
-    width: 100%;
-    height: 115px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    width: 1246px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    h1 {
+      font-weight: 300;
+      font-size: 30px;
+      letter-spacing: -0.01em;
+      color:  rgb(77, 77, 81);
+      margin-bottom: 30px;
+    }
+
+    .month-year-stats-heading{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .stats-year-select{
+        display: flex;
+        flex-direction: row;
+
+        h2 {
+          margin-left: 10px;
+          margin-right: 10px;
+          font-size: 24px;
+          font-weight: 300;
+          color:  rgb(77, 77, 81);
+        }
+
+        .fas {
+          font-size: 24px;
+          color:  rgb(77, 77, 81);
+          height: 24px;
+        }
+
+        .fas:hover{
+          color: #007FB6;
+          cursor: pointer;
+        }
+
+      }
+
+    }
 
     .annual-total-widget {
-      border: 1px solid;
+      // border: 1px solid;
       height: 54px;
       width: 328px;
       margin-right: 5px;
@@ -89,6 +132,8 @@
   }
 
   section {
+    width: 1246px;
+
     .month-list {
       display: flex;
       flex-direction: row;

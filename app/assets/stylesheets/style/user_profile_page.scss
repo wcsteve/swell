@@ -90,8 +90,15 @@
             vertical-align: baseline;
             border-radius: 0px;
             width: 100px;
-            margin-right: 25px;
+            // margin-right: 25px;
             align-items: center;
+          }
+
+          label {
+            height: 34px;
+            align-self: center;
+            margin-left: 5px;
+            margin-right: 10px;
           }
         }
         .workout-input{
@@ -124,7 +131,7 @@
 .profile-aside{
   width: 311.5px;
   padding: 0px 16px;
-  height: 981px;
+  height: calc(100vh - 55px);
 
 
 }

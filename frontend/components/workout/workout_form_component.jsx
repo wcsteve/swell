@@ -105,18 +105,22 @@ class WorkOutFormComponent extends React.Component{
             <section className="workout-time-input">
 
               <input
+                id='hours'
                 type="number"
                 onChange={this.handleTimeInput('workout_time_hours')}
                 placeholder="Hours"
                 value={this.state.workout_time_hours}
                 />
+              <label for='hours'>Hours</label>
 
-                <input
-                  type="number"
-                  onChange={this.handleTimeInput('workout_time_minutes')}
-                  placeholder="Minutes"
-                  value={this.state.workout_time_minutes}
-                  />
+              <input
+                id='minutes'
+                type="number"
+                onChange={this.handleTimeInput('workout_time_minutes')}
+                placeholder="Minutes"
+                value={this.state.workout_time_minutes}
+                />
+              <label for='minutes'>Minutes</label>
             </section>
 
 
