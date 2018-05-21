@@ -22,6 +22,9 @@ class UserProfileComponent extends React.Component{
             <UserProfileWidgetContainer />
           </div>
 
+          <div className='workout-stats-widget'>
+            <WorkoutStatsWidgetContainer />
+          </div>
 
         </aside>
 
@@ -42,7 +45,3 @@ class UserProfileComponent extends React.Component{
 }
 
 export default UserProfileComponent;
-
-// <div className='workout-stats-widget'>
-//   <WorkoutStatsWidgetContainer />
-// </div>

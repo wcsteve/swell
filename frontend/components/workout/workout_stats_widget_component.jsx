@@ -10,16 +10,16 @@ class WorkOutStatsWidget extends React.Component{
 
 
   componentDidMount(){
-    this.props.requestAllWorkouts().then(() => this.setState({
-      lastWeekWorkouts: this.props.lastWeekWorkouts,
-
-    }))
+    this.props.fetchWeekStats()
   }
 
   render(){
-
     if (!this.props.lastWeekWorkouts) return null;
-    let totalWeekStats;
+    const { lastWeekWorkouts } = this.props
+    console.log(lastWeekWorkouts)
+    const distanceTotal = lastWeekWorkouts.reduce((acc, distance) => {
+      return acc + distance
+    }, 0);
 
     let singleDayStats;
     if (this.state.singleWorkout) {
@@ -35,8 +35,8 @@ class WorkOutStatsWidget extends React.Component{
           <h1>WorkoutStatsWidget</h1>
         </header>
         <main>
-          {totalWeekStats}
-          {singleDayStats}
+          <h2>THIS WEEK</h2>
+          {distanceTotal.toFixed(1)} mi
         </main>
         <footer></footer>
       </React.Fragment>

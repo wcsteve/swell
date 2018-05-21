@@ -1,8 +1,22 @@
-export const weeklyStatTotals = stats => {
-  // stats.forEach(stat => {
-  //   console.log
-  // })
-  return 1;
+export const weeklyStatTotals = workouts => {
+  // const weeklyTotals = new Array(7).fill(new Array());
+  const weeklyTotals = [ 0, 0, 0, 0, 0, 0, 0 ]
+  const today = new Date();
+  const lastSunday = new Date(today.setDate(today.getDate()-today.getDay()));
+  const nextSunday = new Date(today.setDate(lastSunday.getDate() + 7));
+
+  for (let workoutId in workouts) {
+    const currentWorkout = workouts[workoutId]
+    let dateObject = new Date(currentWorkout.workoutDate.split('-'));
+    let dayOfWeek = dateObject.getDay()
+
+    if (dateObject >= lastSunday && dateObject < nextSunday) {
+      weeklyTotals[dayOfWeek] += currentWorkout.route.distance;
+    }
+  }
+
+  console.log('*', weeklyTotals)
+  return weeklyTotals;
 };
 
 export const statTotalsByMonth = stats => {
