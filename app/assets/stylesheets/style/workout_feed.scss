@@ -2,7 +2,7 @@
   width: 624px;
   padding: 0px 16px;
   box-sizing: border-box;
-  height: 981px;
+  height: calc(100vh - 55px);
   overflow: scroll;
 
   .feed-header{
