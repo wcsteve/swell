@@ -1,6 +1,6 @@
 export const weeklyStatTotals = workouts => {
   // const weeklyTotals = new Array(7).fill(new Array());
-  const weeklyTotals = [ 0, 0, 0, 0, 0, 0, 0 ]
+  const weeklyTotals = [ 0, 0, 0, 0, 0, 0, 0, 0]
   const today = new Date();
   const lastSunday = new Date(today.setDate(today.getDate()-today.getDay()));
   const nextSunday = new Date(today.setDate(lastSunday.getDate() + 7));
@@ -13,8 +13,10 @@ export const weeklyStatTotals = workouts => {
     if (dateObject >= lastSunday && dateObject < nextSunday) {
       weeklyTotals[dayOfWeek] += currentWorkout.route.distance;
     }
+    if (dateObject.getYear() === 2018) {
+      weeklyTotals[8] += currentWorkout.route.distance;
+    }
   }
-
   console.log('*', weeklyTotals)
   return weeklyTotals;
 };

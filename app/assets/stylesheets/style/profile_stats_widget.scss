@@ -11,4 +11,53 @@
   min-height: 1px;
   display: flex;
   flex-direction: column;
+
+  footer{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+
+    li {
+      font-size: 15px;
+      font-weight: 400;
+
+    }
+
+    #left-stat {
+      margin-right: 16px;
+      border-right: 1px solid;
+      padding-right: 16px;
+    }
+  }
+
+}
+
+.workout-stats-widget-header{
+  h4 {
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 300;
+    line-height: 1.1;
+    font-family: Arial, sans-serif;
+  }
+}
+
+.react-week-chart {
+  width: 220px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.last-week-total{
+  color: rgb(143, 213, 190);
+  font-size: 20px;
+  text-align: center;
+  font-weight: 400;
+  font-family: Arial, sans-serif;
 }

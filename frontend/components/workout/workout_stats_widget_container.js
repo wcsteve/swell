@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
   const lastWeekStats = weeklyStatTotals(state.entities.workouts)
   return ({
     currentUser: state.session.currentUser,
-    lastWeekWorkouts: lastWeekStats,
+    lastWeekWorkouts: lastWeekStats.slice(0, 7),
+    annualTotalDistance: lastWeekStats[7]
   })
 }
 
