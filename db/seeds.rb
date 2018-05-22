@@ -8,6 +8,64 @@
 User.destroy_all
 Route.destroy_all
 Workout.destroy_all
+
+workout_names = [
+  'Sasquatch Seekers',
+  'Gummi Bear Grylls',
+  'Runners of Unusual Strides' ,
+  'You’ve died of dysentery' ,
+  'Climb & Punishment' ,
+  'Making Mole Hills out of Mountains' ,
+  'Where’s the Road? ',
+  'Trail relay… oh Hill No you didn’t' ,
+  'Trails and Tribulations' ,
+  'Is it Really this Dark in the Forest? ',
+  'Holy Grail… We’re Hittin the Trail! ',
+  'Ales and Trails' ,
+  'Our Ragnar Team is in-TENTS this year! ',
+  'We’re going in Circles! ',
+  'Low Budget Horror Film' ,
+  'Just a few S’more miles ',
+  'Quest for the Holy Trail' ,
+  'If We Fall, We Will Make a Sound' ,
+  'In-Tent on Running',
+  'The Village Idiots',
+  'S.O.S. –Stick or Snake',
+  'We’re Trail-ing',
+  'Burning the Midnight Soil',
+  'I Relay Like to Camp',
+  'Legs Done Trail Me Now',
+  'Trail & Error',
+  'The Donner Party',
+  'Bear Bait',
+  'Slow White and the 7 Drunks',
+  'Better Chafe Than Sorry Trail',
+  'Running Outta Moonshine',
+  'Sleepy in Snowmass',
+  'We’re not RELAYted',
+  'Scurrying Scientists',
+  'In it for the S’mores',
+  'Oh-Limp-ians',
+  'Smokey’s Worst Nightmare!!',
+  'Knights of the Buffet Table',
+  'Chafed and Confused',
+  'Hall of',
+  'Shamers',
+  'The Bouncer',
+  'We Die Young',
+  'Kickboxer: Retaliation',
+  'Kill em All',
+  'Kickboxer: Vengeance',
+  'Cyborg',
+  'Wake of Death',
+  'Lionheart',
+  'Maximum Risk',
+  'Replicant',
+  'Death Warrant',
+  'Nowhere to Run',
+  'Double Impact',
+  'Hard Target',
+]
 user1 = User.create!(username: "lanceArmstrong", password: "password", email: "lance@livestrong.com")
 
 #
@@ -130,6 +188,38 @@ polyline: '}jveFnaojVT|@_@FIDKTK\UdAWlBEh@H~BBJSf@_BhDi@pA\jCB`@?XRF\J`Aj@xBjAvA
 
 today = DateTime.now
 date = today - today.wday + 7
+routes = [route1, route2, route3, route4, route5, route6, route7, route8, route9, route10, route11]
+
+54.times do |i|
+  new_title = workout_names[i];
+  random_route = rand(0..10)
+  route_id = routes[random_route].id
+  random_date = date - rand(0..150)
+  workout_hours = rand(0..2).to_s
+  workout_min = rand(1..60).to_s
+  Workout.create!(user_id: user1.id, title: new_title, route_id: route_id, activity_type: "run", time: "---", workout_date: random_date, workout_time_hours: workout_hours, workout_time_minutes: workout_min)
+end
+
+workouts_this_week = [
+  'Assassination Games',
+  'Beur sur la ville',
+  'Blade',
+  'Demolition Man',
+  'The Art of War',
+  'Rising Sun',
+  'Drop Zone,'
+]
+
+7.times do |i|
+  new_title = workouts_this_week[i];
+  random_route = rand(0..10)
+  route_id = routes[random_route].id
+  random_date = date - i
+  workout_hours = rand(0..2).to_s
+  workout_min = rand(1..60).to_s
+  Workout.create!(user_id: user1.id, title: new_title, route_id: route_id, activity_type: "run", time: "---", workout_date: random_date, workout_time_hours: workout_hours, workout_time_minutes: workout_min)
+end
+
 
 Workout.create!(
   user_id: user1.id,
