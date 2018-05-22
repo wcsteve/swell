@@ -26,7 +26,6 @@ class AnnualStatsTotal extends React.Component {
  render() {
 
    const {distanceTotal, durationMinTotal, elevationGainTotal, activities} = this.props;
-   console.log(this.props)
    return (
       <div className="annual-total-widget">
         <ul className="annual-stats-list">

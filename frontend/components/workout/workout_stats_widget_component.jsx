@@ -17,7 +17,6 @@ class WorkOutStatsWidget extends React.Component {
 
   render() {
     if (!this.props.lastWeekWorkouts) return null;
-    console.log('props', this.props)
     const { lastWeekWorkouts,
             lastWeekTotals,
             annualTotalDistance } = this.props;

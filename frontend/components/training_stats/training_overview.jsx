@@ -50,7 +50,6 @@ class TrainingOverview extends React.Component{
   changeYear(num){
     const newYear = this.state.statsYear + num;
     const newStatTotal = this.calculateAnnualStats(newYear);
-    console.log('here', newStatTotal)
     this.setState({
       statsYear: newYear,
       distanceTotal: (newStatTotal.distance).toString(),
@@ -61,7 +60,6 @@ class TrainingOverview extends React.Component{
   }
 
   render() {
-    console.log(this.state.distanceTotal)
     const  distanceTotal = this.state.distanceTotal || this.props.distanceTotal
     const  durationMinTotal = this.state.durationMinTotal || this.props.durationMinTotal
     const  elevationGainTotal = this.state.elevationGainTotal || this.props.elevationGainTotal

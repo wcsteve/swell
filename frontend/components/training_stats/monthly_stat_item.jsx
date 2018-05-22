@@ -15,17 +15,14 @@ class MonthStatsBarChart extends React.Component {
 
   componentDidMount() {
     this.parseStats(this.props);
-    console.log('**', this.props.height)
   }
 
   componentWillReceiveProps(nextProps) {
     this.parseStats(nextProps);
-    console.log('**', this.props.height)
   }
 
   parseStats(props) {
     const stats = props.stats;
-    // console.log('input', this.props)
     let parsedStats = Array(31).fill(0);
     let statTotal = 0
     for (let i = 0; i < stats.length; i++) {
@@ -47,7 +44,6 @@ class MonthStatsBarChart extends React.Component {
       parsedStats[day - 1] += metric;
       statTotal += metric;
     }
-    // console.log('output', parsedStats)
 
     this.setState({ stats: parsedStats, statTotal: statTotal.toFixed() });
   }
