@@ -17,16 +17,15 @@ class WorkOutStatsWidget extends React.Component {
 
   render() {
     if (!this.props.lastWeekWorkouts) return null;
-    const { lastWeekWorkouts } = this.props;
-    const barHeight = Math.max.apply(null, lastWeekWorkouts) * 1.5;
-    const distanceTotal = lastWeekWorkouts.reduce((acc, distance) => {
-      return acc + distance;
-    }, 0);
+    console.log('props', this.props)
+    const { lastWeekWorkouts,
+            lastWeekTotals,
+            annualTotalDistance } = this.props;
 
-    let singleDayStats;
-    if (this.state.singleWorkout) {
-      singleDayStats = <h3>{this.state.singleWorkout.title}</h3>;
-    }
+    const barHeight = Math.max.apply(null, lastWeekWorkouts) * 1.5;
+    const hour = (lastWeekTotals.time / 60).toFixed()
+    const min = lastWeekTotals.time % 60
+
 
     const chartData = {
       labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -77,7 +76,7 @@ class WorkOutStatsWidget extends React.Component {
       <React.Fragment>
         <header className="workout-stats-widget-header">
           <h4>THIS WEEK</h4>
-          <div className="last-week-total">{distanceTotal.toFixed(1)} mi</div>
+          <div className="last-week-total">{(lastWeekTotals.distance).toFixed(1)} mi</div>
         </header>
 
         <main>
@@ -88,8 +87,8 @@ class WorkOutStatsWidget extends React.Component {
 
         <footer>
           <ul>
-            <li id='left-stat'>23h 0m</li>
-            <li>62 ft</li>
+            <li id='left-stat'>{hour}h {min}m</li>
+            <li>{(lastWeekTotals.elevationGain).toFixed()} ft</li>
           </ul>
         </footer>
       </React.Fragment>
