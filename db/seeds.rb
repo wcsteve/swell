@@ -339,7 +339,6 @@ route_id: route2.id,
 activity_type: "run",
 time: "---",
 workout_date: date - 14,
-id: 19,
 workout_time_hours: "1",
 workout_time_minutes: "26"
 )
@@ -351,7 +350,6 @@ route_id: route3.id,
 activity_type: "run",
 time: "---",
 workout_date: date - 15,
-id: 20,
 workout_time_hours: "",
 workout_time_minutes: "56"
 )
