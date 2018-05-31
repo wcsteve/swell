@@ -7,7 +7,7 @@ const sessionLinks = () => (
   <nav className="SignInNavBar">
     <NavLink className="SessionButton" to='/signup'>Sign Up</NavLink>
     <NavLink className="SessionButton" to='/signin'>Sign In</NavLink>
-    <NavLink className="SessionButton" to='/signin'>Demo</NavLink>
+    <NavLink className="SessionButton" to='/demo'>Demo</NavLink>
   </nav>
 )
 

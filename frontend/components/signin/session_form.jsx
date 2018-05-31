@@ -15,6 +15,13 @@ class SessionForm extends React.Component {
 
   componentDidMount(){
     this.props.receiveErrors([]);
+    if (this.props.formType === 'Demo') {
+      this.setState({username: "lanceArmstrong", password: "password"},
+      () => {
+        const user = Object.assign({}, this.state);
+        this.props.processForm(user).then(() => this.props.history.push("/users"));
+      })
+    }
   }
 
   handleInput(field){

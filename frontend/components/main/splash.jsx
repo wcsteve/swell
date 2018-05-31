@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect,} from 'react-router-dom';
 import SignUpFormContainer from '../signin/signup_form_container';
 import SignInFormContainer from '../signin/signin_form_container';
+import DemoFormContainer from '../signin/demo_form_container';
 import { AuthRoute, ProtectedRoute } from '../../util/url_route_util';
 
 
@@ -22,6 +23,7 @@ const Splash = () => (
     <Switch>
       <AuthRoute path='/signup' component={SignUpFormContainer} />
       <AuthRoute path='/signin' component={SignInFormContainer} />
+      <AuthRoute path='/demo' component={DemoFormContainer} />
       <AuthRoute exact path='/' component={HomePage} />
       <Redirect to='/' />
     </Switch>
