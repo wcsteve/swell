@@ -52,10 +52,10 @@ class EditWorkoutFormComponent extends React.Component{
     }
   }
 
-  componentDidMount(){
-    this.props.requestAllRoutes();
-    this.parseTime()
-  }
+  // componentDidMount(){
+  //   // this.props.requestAllRoutes();
+  //   this.parseTime()
+  // }
 
   parseTime(){
   }

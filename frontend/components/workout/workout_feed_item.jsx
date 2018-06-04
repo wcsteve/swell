@@ -42,7 +42,7 @@ class WorkoutFeedItem extends React.Component{
     return (
 
       <React.Fragment>
-        <Modal />
+        
         <li className="card">
 
           <header className="item-feed-header">

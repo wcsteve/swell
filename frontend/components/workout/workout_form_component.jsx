@@ -21,10 +21,6 @@ class WorkOutFormComponent extends React.Component{
     }
   }
 
-  componentDidMount(){
-    this.props.requestAllRoutes();
-  }
-
   handleInput(field){
     return (e) => this.setState({[field]: e.target.value})
   }
@@ -51,7 +47,6 @@ class WorkOutFormComponent extends React.Component{
   }
 
   render(){
-    if (!this.props.routes) return null;
     const dataListOptions = this.props.routes.map(
       (route) => <option
                     key={route.id}
