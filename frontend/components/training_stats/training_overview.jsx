@@ -47,6 +47,7 @@ class TrainingOverview extends React.Component{
     this.setState({selectedStat: unitChoice})
   }
 
+
   changeYear(num){
     const newYear = this.state.statsYear + num;
     const newStatTotal = this.calculateAnnualStats(newYear);
@@ -77,6 +78,7 @@ class TrainingOverview extends React.Component{
           height={this.props.maxStats[this.state.selectedStat]}
           statChoice={this.state.selectedStat}
           year={this.state.statsYear}
+          history={this.props.history}
           />
         )
       })

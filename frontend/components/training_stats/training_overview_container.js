@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import TrainingOverview from './training_overview';
 import { requestStats } from '../../actions/stats_actions'
-import { weeklyStatTotals, statTotalsByMonth } from '../../selectors/stat_selectors'
+import { weeklyStatTotals, statTotalsByMonth } from '../../selectors/stat_selectors';
+import { withRouter } from 'react-router-dom';
 // import { openModal, closeModal } from '../actions/modal_actions';
 
 const mapStateToProps = (state) => {
@@ -23,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   getStats: () => dispatch(requestStats())
 })
 
-export default (connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps)
   (TrainingOverview));

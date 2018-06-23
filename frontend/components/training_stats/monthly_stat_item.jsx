@@ -5,6 +5,7 @@ class MonthStatsBarChart extends React.Component {
   constructor(props) {
     super(props);
 
+    this.openMonthStats = this.openMonthStats.bind(this);
     this.parseState = this.parseStats.bind(this);
     this.parsedStats = Array(31).fill(0)
     this.state = {
@@ -19,6 +20,11 @@ class MonthStatsBarChart extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.parseStats(nextProps);
+  }
+
+  openMonthStats(){
+    this.props.history.push(`/training/${this.props.year}/${this.props.monthNumber}`)
+    // console.log(this.props.history)
   }
 
   parseStats(props) {
@@ -124,7 +130,7 @@ class MonthStatsBarChart extends React.Component {
     }
 
     return (
-      <li className="monthly-chart">
+      <li className="monthly-chart" onClick={() => this.openMonthStats()}>
         <h3>{months[this.props.monthNumber]}</h3>
 
         {statTotal}
