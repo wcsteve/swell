@@ -5,10 +5,12 @@ import { requestAllWorkouts } from '../../actions/workout_actions'
 import { selectedMonthWorkout } from '../../selectors/workout_selectors';
 
 const mapStateToProps = (state, ownProps) => {
-  const year = ownProps.match.params.year;
-  const month = ownProps.match.params.month;
+  const year = parseInt(ownProps.match.params.year);
+  const month = parseInt(ownProps.match.params.month);
   return {
     selectedWorkouts: selectedMonthWorkout(state.entities.workouts, year, month),
+    month: month,
+    year: year,
   }
 }
 
