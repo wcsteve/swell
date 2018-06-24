@@ -1,4 +1,5 @@
 import React from 'react';
+import WeekStatItem from './week_stat_item';
 
 class WeeklyStats extends React.Component {
   constructor(props) {
@@ -15,20 +16,40 @@ class WeeklyStats extends React.Component {
 
   render() {
     // console.log(this.props.selectedWorkouts)
-    console.log(this.state.month);
-    console.log(this.state.year);
+
     const numOfWeeks = () => {
-      const firstOfMonth = new Date(this.state.year, this.state.year, 1);
-      const lastOfMonth = new Date(this.state.year, this.state.year + 1, 0);
+      const firstOfMonth = new Date(this.state.year, this.state.month, 1);
+      const lastOfMonth = new Date(this.state.year, this.state.month + 1, 0);
 
       const used = firstOfMonth.getDay() + lastOfMonth.getDate();
 
       return Math.ceil(used / 7);
     };
 
+    const weekStatList = ( () => {
+      const listComponents = [];
+      console.log('*****', numOfWeeks)
+      for (let i = 0; i < numOfWeeks(); i++) {
+        listComponents.push(
+          <WeekStatItem
+            key={i}
+            weekNumber={i}
+            stats={this.props.selectedWorkouts}
+            />
+        )
+      }
+
+      return listComponents;
+    })()
+
+    console.log(weekStatList)
     return (
       <div>
         <h1>hello</h1>
+
+        <ul>
+          {weekStatList}
+        </ul>
       </div>
     );
   }
