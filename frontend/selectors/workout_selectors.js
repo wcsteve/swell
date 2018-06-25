@@ -10,6 +10,7 @@ export const selectedMonthWorkout = function(workouts, year, month) {
     let workoutDate = new Date(workout.workoutDate.split('-'))
 
     if (workoutDate >= startSunday && workoutDate < lastSunday) {
+      workout.id = workoutID
       selectedWorkouts.push(workout);
     }
   }

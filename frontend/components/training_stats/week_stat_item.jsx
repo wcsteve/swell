@@ -1,4 +1,6 @@
 import React from 'react';
+import WeekSummaries from './week_summaries';
+import BubbleChart from './bubble_chart';
 
 class WeekStatItem extends React.Component {
   constructor(props) {
@@ -16,32 +18,41 @@ class WeekStatItem extends React.Component {
 
   filterWeekData(data, year, month) {
     const firstOfMonth = new Date(year, month, 1);
-    const startSunday = new Date(firstOfMonth.setDate(firstOfMonth.getDate() - firstOfMonth.getDay() + (7 * this.props.weekNumber)));
-    const endSunday = new Date(firstOfMonth.setDate(startSunday.getDate() + 7 ));
+    const startSunday = new Date(
+      firstOfMonth.setDate(
+        firstOfMonth.getDate() -
+          firstOfMonth.getDay() +
+          7 * this.props.weekNumber
+      )
+    );
+    const endSunday = new Date(firstOfMonth.setDate(startSunday.getDate() + 7));
 
-
-    const thisWeeksWorkouts = data.filter((workout) => {
+    const thisWeeksWorkouts = data.filter(workout => {
       let workoutDate = new Date(workout.workoutDate.split('-'));
-      if ((workoutDate >= startSunday) && (workoutDate < endSunday)) {
+      if (workoutDate >= startSunday && workoutDate < endSunday) {
         return workout;
       }
     });
-    console.log(thisWeeksWorkouts)
-    return thisWeeksWorkouts;
+
+    return [thisWeeksWorkouts, startSunday];
   }
 
   _processData() {
     const weekData = [[], [], [], [], [], [], []];
     // console.log(this.props.stats)
-    const data = this.filterWeekData(this.props.stats, this.props.year, this.props.month);
+    const data = this.filterWeekData(
+      this.props.stats,
+      this.props.year,
+      this.props.month
+    );
     const statTotals = {
       elevation: 0,
       distance: 0,
-      minutes: 0
+      duration: 0
     };
 
-    for (let i = 0; i < data.length; i++) {
-      let workout = data[i];
+    for (let i = 0; i < data[0].length; i++) {
+      let workout = data[0][i];
       let date = workout.workoutDate;
       let dayOfWeek = new Date(date.split('-')).getDay();
       weekData[dayOfWeek].push(workout);
@@ -53,23 +64,38 @@ class WeekStatItem extends React.Component {
 
       statTotals.elevation = statTotals.elevation += elevationGain;
       statTotals.distance = statTotals.distance += distance;
-      statTotals.minutes = statTotals.minutes += minutes;
+      statTotals.duration = statTotals.duration += minutes;
     }
 
-    console.log(statTotals)
-    this.setState({ weekData, statTotals })
+    this.setState({ weekData, statTotals, startSunday: data[1] }, () => 1 + 1);
   }
 
-
   render() {
-    // if (!this.props.weekData) {
-    //   return null;
-    // }
+    if (!this.state.weekData) {
+      return null;
+    }
+    const bubbleCharts = (this.state.weekData.map( (singleDayData, idx) =>
+      <BubbleChart
+        key={idx}
+        data={singleDayData}
+        selectedStat={this.props.selectedStat}
+        />
+    ))
 
     return (
       <li className="week">
-        <div className="week-summary" />
-        <div className="week-breakdown" />
+        <div className="week-summary">
+          <WeekSummaries
+            {...this.state.statTotals}
+            selectedStat={this.props.selectedStat}
+            startSunday={this.state.startSunday}
+            />
+        </div>
+        <div className="week-breakdown">
+          <ul className="bubble-list">
+            {bubbleCharts}
+          </ul>
+        </div>
       </li>
     );
   }
