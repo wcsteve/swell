@@ -199,3 +199,21 @@
 .monthly-chart:hover .month-stat-unit {
   color: #fff;
 }
+
+.week{
+  box-sizing: border-box;
+  width: 799px;
+  height: 151.5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.week-summary{
+  width: 130px;
+  border: 1px solid;
+}
+
+.week-breakdown{
+  width: 669px;
+  border: 1px solid;
+}

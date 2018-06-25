@@ -14,6 +14,5 @@ export const selectedMonthWorkout = function(workouts, year, month) {
     }
   }
 
-  console.log(selectedWorkouts)
   return selectedWorkouts;
 }

@@ -4,7 +4,7 @@ export const weeklyStatTotals = workouts => {
     distance: 0,
     elevationGain: 0
   };
-  const lastWeek = [0, 0, 0, 0, 0, 0, 0]
+  const lastWeek = [0, 0, 0, 0, 0, 0, 0];
 
   const weekAndAnnualCount = selectLastWeekWorkouts(workouts);
   const lastWeekWorkouts = weekAndAnnualCount[0];
@@ -13,12 +13,11 @@ export const weeklyStatTotals = workouts => {
     let currentWorkout = lastWeekWorkouts[i];
     let dateObject = new Date(currentWorkout.workoutDate.split('-'));
     let dayOfWeek = dateObject.getDay();
-    lastWeek[dayOfWeek] += currentWorkout.route.distance
+    lastWeek[dayOfWeek] += currentWorkout.route.distance;
 
     let hours = parseInt(currentWorkout.workoutTimeHours);
     let minutes = parseInt(currentWorkout.workoutTimeMinutes);
-    let workoutTime = (hours * 60) + minutes;
-
+    let workoutTime = hours * 60 + minutes;
 
     weeklyTotals.time += workoutTime;
     weeklyTotals.elevationGain += parseInt(currentWorkout.route.elevation_gain);
@@ -31,8 +30,8 @@ function selectLastWeekWorkouts(workouts) {
   const today = new Date();
   const lastSunday = new Date(today.setDate(today.getDate() - today.getDay()));
   const nextSunday = new Date(today.setDate(lastSunday.getDate() + 7));
-  lastSunday.setHours(0,0,0,0)
-  nextSunday.setHours(0,0,0,0)
+  lastSunday.setHours(0, 0, 0, 0);
+  nextSunday.setHours(0, 0, 0, 0);
 
   const selectedWorkouts = [];
   let annualTotal = 0;
@@ -40,7 +39,7 @@ function selectLastWeekWorkouts(workouts) {
   for (let workoutId in workouts) {
     const currentWorkout = workouts[workoutId];
     let dateObject = new Date(currentWorkout.workoutDate.split('-'));
-    dateObject.setHours(0,0,0,0)
+    dateObject.setHours(0, 0, 0, 0);
 
     if (dateObject >= lastSunday && dateObject < nextSunday) {
       selectedWorkouts.push(currentWorkout);

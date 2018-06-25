@@ -1,5 +1,5 @@
 import React from 'react';
-import AnnualStatsTotal from './weekly_total_graph'
+import AnnualStatsTotal from './annual_total_graph'
 import MonthStatsBarChart from './monthly_stat_item'
 
 class TrainingOverview extends React.Component{

@@ -11,7 +11,7 @@ class AnnualStatsTotal extends React.Component {
     super(props);
     this.onItemClick = this.onItemClick.bind(this);
     this.state = {
-      selectedItem: 0
+      selectedItem: 2
     }
   }
 

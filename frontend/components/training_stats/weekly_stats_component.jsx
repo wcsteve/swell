@@ -10,12 +10,16 @@ class WeeklyStats extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.props.requestWorkouts();
+  componentWillMount() {
+    this.props.requestWorkouts().then(() => this.setState({loaded: true}));
   }
 
   render() {
-    // console.log(this.props.selectedWorkouts)
+    if (!this.state.loaded) {
+      return null;
+    }
+
+    console.log(this.props.selectedWorkouts)
 
     const numOfWeeks = () => {
       const firstOfMonth = new Date(this.state.year, this.state.month, 1);
@@ -28,13 +32,14 @@ class WeeklyStats extends React.Component {
 
     const weekStatList = ( () => {
       const listComponents = [];
-      console.log('*****', numOfWeeks)
       for (let i = 0; i < numOfWeeks(); i++) {
         listComponents.push(
           <WeekStatItem
             key={i}
             weekNumber={i}
             stats={this.props.selectedWorkouts}
+            month={this.state.month}
+            year={this.state.year}
             />
         )
       }
@@ -42,7 +47,6 @@ class WeeklyStats extends React.Component {
       return listComponents;
     })()
 
-    console.log(weekStatList)
     return (
       <div>
         <h1>hello</h1>
