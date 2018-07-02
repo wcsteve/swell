@@ -19,10 +19,11 @@ const Main = () => (
       <ProtectedRoute exact path="/routes" component={RouteIndexContainer} />
       <ProtectedRoute exact path="/routes/new" component={RouteMapContainer} />
       <ProtectedRoute exact path="/training" component={TrainingOverviewContainer} />
-      <ProtectedRoute exact path="/training/:year/:month" component={WeeklyStatsContainer} />
       <AuthRoute path="/" component={Splash} />
     </Switch>
   </div>
 )
 
 export default Main;
+
+// <ProtectedRoute exact path="/training/:year/:month" component={WeeklyStatsContainer} />
