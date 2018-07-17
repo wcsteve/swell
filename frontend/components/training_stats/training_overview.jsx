@@ -65,8 +65,8 @@ class TrainingOverview extends React.Component{
     const  durationMinTotal = this.state.durationMinTotal || this.props.durationMinTotal
     const  elevationGainTotal = this.state.elevationGainTotal || this.props.elevationGainTotal
     const  activities = this.state.activities || this.props.activities
-
-    if(Object.keys(this.props.stats).length === 0) return null
+    
+    // if(Object.keys(this.props.stats).length === 0) return null
 
     const monthStats = (
       this.props.monthlyStats.map((monthStat, index) => {

@@ -4,7 +4,7 @@ class Api::StatsController < ApplicationController
     start_date = last_sunday - (7 * 3)
     end_date = last_sunday + 7
     # @stats = Workout.includes(:route).where(workout_date: start_date..end_date)
-    @stats = Workout.includes(:route).all
+    @stats = Workout.includes(:route).where(user_id: current_user.id)
     @date_range = @stats.map{ |stat| stat.workout_date }.sort
     @organized_stats = group_workouts_by_date(@stats, @date_range)
   end
