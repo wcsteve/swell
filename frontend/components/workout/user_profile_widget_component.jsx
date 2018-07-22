@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Profile_Footer from './user_profile_footer';
 
 
 class UserProfileWidget extends React.Component{
@@ -16,11 +17,13 @@ class UserProfileWidget extends React.Component{
     const { currentUser, workoutsTotal, distanceTotal, evelationTotal, lastActivity } = this.props
 
     let lastWorkoutTitle;
-    let lastWorkoutDate
+    let lastWorkoutDate;
+
     if (this.props.lastActivity){
       lastWorkoutTitle = this.props.lastActivity.title
       lastWorkoutDate = this.props.lastActivity.date
     }
+
     return(
       <React.Fragment>
         <img className="profile-avatar" src="https://raw.githubusercontent.com/wcsteve/swell/master/app/assets/images/default_profile_icon.jpg"></img>
@@ -46,23 +49,15 @@ class UserProfileWidget extends React.Component{
           </ul>
         </section>
 
-        <footer className='athlete-card-footer'>
-          <section>
-            <div className="activity-title">Latest Activity</div>
-            <div className="last-activity-link">
-              <strong>{lastWorkoutTitle} </strong>
-              <time>{lastWorkoutDate}</time>
-            </div>
-          </section>
-          <section className="training-log-link">
-            <Link to={`/training`}>Your Training Log
-            </Link>
-            <i className="fas fa-caret-right"></i>
-          </section>
-        </footer>
+        <Profile_Footer
+          lastWorkoutTitle={lastWorkoutTitle}
+          lastWorkoutDate={lastWorkoutDate}
+          />
       </React.Fragment>
     )
   }
 }
+
+
 
 export default UserProfileWidget;
