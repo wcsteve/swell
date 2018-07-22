@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import Profile_Footer from './user_profile_footer';
 
 

@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownprops) => {
   const feetClimbed = workouts.reduce((acc, el) =>  {
     return acc + parseInt(el.route.elevation_gain)
   }, 0);
-  
+
   return ({
     currentUser: state.session.currentUser,
     workoutsTotal: workouts.length,
@@ -23,9 +23,6 @@ const mapStateToProps = (state, ownprops) => {
     lastActivity: workouts[workouts.length - 1]
   })
 }
-//
-// const mapDispatchToProps = (dispatch) => ({
-//
-// })
+
 
 export default connect(mapStateToProps, null)(UserProfileWidget);

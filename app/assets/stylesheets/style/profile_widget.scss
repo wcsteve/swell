@@ -65,10 +65,12 @@
 
 
   .training-log-link:hover{
+    color: #005b83;
 
     .fa-caret-right{
-      margin-left: 3px;
-      color: #005b83;
+      // margin-left: 3px;
+      text-decoration: none;
+      margin-left: 113px;
     }
 
   }
@@ -96,7 +98,8 @@
     float: right;
     height: 24px;
     width: 24px;
-    font-size: 24px;
+    font-size: 21px;
+    margin-left: 110px;
     margin-bottom: 1px;
   }
 
