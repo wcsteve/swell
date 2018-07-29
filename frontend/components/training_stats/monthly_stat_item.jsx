@@ -23,7 +23,7 @@ class MonthStatsBarChart extends React.Component {
   }
 
   openMonthStats(){
-    // this.props.history.push(`/training/${this.props.year}/${this.props.monthNumber}`)
+    this.props.history.push(`/training/${this.props.year}/${this.props.monthNumber}`)
     // console.log(this.props.history)
   }
 

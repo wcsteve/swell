@@ -1,12 +1,19 @@
 import React from 'react';
 import WeekSummaries from './week_summaries';
-import BubbleChart from './bubble_chart';
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  HorizontalGridLines,
+  LineMarkSeries
+} from 'react-vis';
 
 class WeekStatItem extends React.Component {
   constructor(props) {
     super(props);
     this._processData = this._processData.bind(this);
     this.filterWeekData = this.filterWeekData.bind(this);
+    this._selectedStat = this._selectedStat.bind(this);
     this.state = {
       weekData: ''
     };
@@ -37,8 +44,22 @@ class WeekStatItem extends React.Component {
     return [thisWeeksWorkouts, startSunday];
   }
 
+  componentWillReceiveProps(nextprops) {
+    if (this.props.selectedStat !== nextprops.selectedStat) {
+      this._processData();
+    }
+  }
+
   _processData() {
-    const weekData = [[], [], [], [], [], [], []];
+    const weekData = [
+      { x: 0, y: 0 },
+      { x: 1, y: 0 },
+      { x: 2, y: 0 },
+      { x: 3, y: 0 },
+      { x: 4, y: 0 },
+      { x: 5, y: 0 },
+      { x: 6, y: 0 }
+    ];
     // console.log(this.props.stats)
     const data = this.filterWeekData(
       this.props.stats,
@@ -55,32 +76,40 @@ class WeekStatItem extends React.Component {
       let workout = data[0][i];
       let date = workout.workoutDate;
       let dayOfWeek = new Date(date.split('-')).getDay();
-      weekData[dayOfWeek].push(workout);
       let elevationGain = parseInt(workout.route.elevation_gain);
       let distance = workout.route.distance;
       let minutes =
         parseInt(workout.workoutTimeMinutes) +
         parseInt(workout.workoutTimeHours) * 60;
 
+      weekData[dayOfWeek]['y'] += this._selectedStat(
+        elevationGain,
+        distance,
+        minutes,
+        this.props.selectedStat
+      );
       statTotals.elevation = statTotals.elevation += elevationGain;
       statTotals.distance = statTotals.distance += distance;
       statTotals.duration = statTotals.duration += minutes;
     }
-
     this.setState({ weekData, statTotals, startSunday: data[1] }, () => 1 + 1);
+  }
+
+  _selectedStat(elevationGain, distance, minutes, selectedStat) {
+    if (selectedStat === 'distance') {
+      return distance;
+    } else if (selectedStat === 'elevation') {
+      return elevationGain;
+    } else {
+      return minutes;
+    }
   }
 
   render() {
     if (!this.state.weekData) {
       return null;
     }
-    const bubbleCharts = (this.state.weekData.map( (singleDayData, idx) =>
-      <BubbleChart
-        key={idx}
-        data={singleDayData}
-        selectedStat={this.props.selectedStat}
-        />
-    ))
+
 
     return (
       <li className="week">
@@ -89,12 +118,17 @@ class WeekStatItem extends React.Component {
             {...this.state.statTotals}
             selectedStat={this.props.selectedStat}
             startSunday={this.state.startSunday}
-            />
+          />
         </div>
         <div className="week-breakdown">
-          <ul className="bubble-list">
-            {bubbleCharts}
-          </ul>
+          <XYPlot width={650} height={151}>
+            <HorizontalGridLines />
+            <LineMarkSeries style={{
+            stroke: 'red'
+          }} data={this.state.weekData} />
+            <XAxis title="X" />
+            <YAxis />
+          </XYPlot>
         </div>
       </li>
     );
@@ -102,3 +136,13 @@ class WeekStatItem extends React.Component {
 }
 
 export default WeekStatItem;
+
+// <ul className="bubble-list">
+// </ul>
+// const bubbleCharts = (this.state.weekData.map( (singleDayData, idx) =>
+//   <BubbleChart
+//     key={idx}
+//     data={singleDayData}
+//     selectedStat={this.props.selectedStat}
+//     />
+// ))
