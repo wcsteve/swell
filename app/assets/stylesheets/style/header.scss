@@ -25,9 +25,15 @@
 
 .SessionButton {
   border-radius: 1px;
-  font-size: 11px;
+  font-size: 14px;
   padding: 12px 40px;
-  border: 1px solid #cccccc;
+  font-family: Roboto;
+  font-weight: 400;
+  color:rgb(96, 96, 101);
+}
+
+.SessionButton :hover{
+  color: #e34402;
 }
 
 .main-nav-bar{
@@ -35,7 +41,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 80vw;
+  width: 1152px;
 }
 
 .site-nav-bar{
@@ -43,9 +49,14 @@
   flex-direction: row;
   align-items: center;
   font-size: 14px;
-  width: 400px;
+  width: 433px;
   justify-content: space-between;
   height: 55px;
+  box-sizing: border-box;
+}
+
+.selected-nav-bar{
+  border-bottom: 3px solid #e34402;
 }
 
 .site-nav-button {

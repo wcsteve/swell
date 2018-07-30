@@ -16,7 +16,7 @@ const personalGreeting = (currentUser, logout) => (
     <NavBar/>
     <nav className="session-nav-bar">
       <button
-        className="sign-out-button"
+        className="SessionButton"
         type="button"
         onClick={logout}>Log Out
       </button>
