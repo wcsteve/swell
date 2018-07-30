@@ -140,7 +140,6 @@ class WeekStatItem extends React.Component {
               lineStyle={{ stroke: '#A4BE9C' }}
               markStyle={{ stroke: '#3788CB', fill: '#3788CB', opacity: 0.75 }}
             />
-            <XAxis tickTotal={0} />
             <YAxis title={this.props.selectedStat} />
           </XYPlot>
         </div>
