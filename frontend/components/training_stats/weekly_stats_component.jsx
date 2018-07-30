@@ -1,6 +1,6 @@
 import React from 'react';
-import WeekStatItem from './week_stat_item';
-
+import WeekStatItem from './weekly_stats_components/week_stat_item';
+import TrainingHeader from './weekly_stats_components/training_header'
 class WeeklyStats extends React.Component {
   constructor(props) {
     super(props);
@@ -55,12 +55,11 @@ class WeeklyStats extends React.Component {
 
     return (
       <main className="stats-main-page">
-        <h1>{this.state.selectedStat}</h1>
-        <select onChange={this.handleChange}>
-          <option value="distance">Distance</option>
-          <option value="elevation">Elevation</option>
-          <option value="duration">Time</option>
-        </select>
+        <h1 className='training-log-title'>Training Log</h1>
+        <TrainingHeader
+          selectedStat={this.state.selectedStat}
+          statSelector={this.handleChange}
+          />
         <ul>{weekStatList}</ul>
       </main>
     );
