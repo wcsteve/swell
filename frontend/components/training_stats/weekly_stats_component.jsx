@@ -13,7 +13,7 @@ class WeeklyStats extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.requestWorkouts().then(() => this.setState({ loaded: true }));
   }
 
@@ -46,6 +46,7 @@ class WeeklyStats extends React.Component {
             month={this.state.month}
             year={this.state.year}
             selectedStat={this.state.selectedStat}
+            maxStats={this.props.maxStats}
           />
         );
       }

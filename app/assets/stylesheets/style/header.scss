@@ -12,12 +12,15 @@
 .Logo {
   margin: 0px 40px;
   padding: 0px 15px;
+  font-family: Gugi;
+  font-size: 35px;
+  color:#fc4c02;
 }
 
 .SignInNavBar{
   display: flex;
   align-items: right;
-  width: 400px;
+  width: 350px;
   margin-right: 50px;
   margin-left: 200px;
   justify-content: space-between;
@@ -26,14 +29,14 @@
 .SessionButton {
   border-radius: 1px;
   font-size: 14px;
-  padding: 12px 40px;
+  padding: 12px 12px;
   font-family: Roboto;
   font-weight: 400;
   color:rgb(96, 96, 101);
 }
 
-.SessionButton :hover{
-  color: #e34402;
+.SessionButton:hover{
+  color: #fc4c02;
 }
 
 .main-nav-bar{
@@ -56,7 +59,7 @@
 }
 
 .selected-nav-bar{
-  border-bottom: 3px solid #e34402;
+  border-bottom: 3px solid #fc4c02;
 }
 
 .site-nav-button {

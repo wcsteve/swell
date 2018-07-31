@@ -51,6 +51,7 @@ class WeekStatItem extends React.Component {
     return [thisWeeksWorkouts, startSunday];
   }
 
+
   _processData() {
     const weekData = [
       { x: 0, y: 0 },
@@ -67,6 +68,7 @@ class WeekStatItem extends React.Component {
       this.props.year,
       this.props.month
     );
+
     const statTotals = {
       elevation: 0,
       distance: 0,
@@ -105,7 +107,15 @@ class WeekStatItem extends React.Component {
         statTotals.duration / 60
       )}h ${statTotals.duration % 60}m`;
     }
-    this.setState({ weekData, statTotals, startSunday: data[1] }, () => 1 + 1);
+    const maxStat = weekData.reduce((acc, day) => {
+      if (day.y > acc) {
+        return day.y
+      } else {
+        return acc
+      }
+    }, 0)
+
+    this.setState({ weekData, statTotals, maxStat, startSunday: data[1] }, () => 1 + 1);
   }
 
   _selectedStat(elevationGain, distance, minutes, selectedStat) {
@@ -122,6 +132,16 @@ class WeekStatItem extends React.Component {
     if (!this.state.weekData) {
       return null;
     }
+    // const chartHeight = this.state.maxStat;
+    const WORDS = {
+      0: 'Sun',
+      1: 'Mon',
+      2: 'Tue',
+      3: 'Wed',
+      4: 'Thu',
+      5: 'Fri',
+      6: 'Sat',
+    }
 
     return (
       <li className="week">
@@ -133,14 +153,17 @@ class WeekStatItem extends React.Component {
           />
         </div>
         <div className="week-breakdown">
-          <XYPlot width={630} height={130}>
+          <XYPlot width={630} height={130} yDomain={[0, (this.state.maxStat + 5)]} yBaseValue={0}>
             <HorizontalGridLines />
             <LineMarkSeries
               data={this.state.weekData}
               lineStyle={{ stroke: '#A4BE9C' }}
               markStyle={{ stroke: '#3788CB', fill: '#3788CB', opacity: 0.75 }}
             />
-            <YAxis title={this.props.selectedStat} />
+          <YAxis />
+          <XAxis tickTotal={7}
+              tickFormat={v => WORDS[v]}
+              />
           </XYPlot>
         </div>
       </li>
