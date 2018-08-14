@@ -1,19 +1,12 @@
 class Api::StatsController < ApplicationController
 
   def index
-    start_date = last_sunday - (7 * 3)
-    end_date = last_sunday + 7
-    # @stats = Workout.includes(:route).where(workout_date: start_date..end_date)
     @stats = Workout.includes(:route).where(user_id: current_user.id)
-    @date_range = @stats.map{ |stat| stat.workout_date }.sort
+    @date_range = @stats.map{ |stat| stat.workout_date }
     @organized_stats = group_workouts_by_date(@stats, @date_range)
   end
 
   def show
-    # week = params[:id].to_i
-    # start_date = last_sunday - (7 * week)
-
-    #finds last week stats only
     start_date = last_sunday
     end_date = last_sunday + 7
     @stats = Workout.includes(:route).where(workout_date: start_date..end_date)

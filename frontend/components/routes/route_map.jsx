@@ -15,7 +15,7 @@ class RouteMap extends React.Component{
     //create an object of type DirectionsService
 
     this.directionsResultRenderer = new google.maps.DirectionsRenderer({
-      draggable: true
+      draggable: false
     });
     // Creates a DirectionRnderer object which will handle displaying DirectionsResult
     this.centerMap = this.centerMap.bind(this);
@@ -24,7 +24,7 @@ class RouteMap extends React.Component{
     this.calcElevation = this.calcElevation.bind(this);
     this.addForm = this.addForm.bind(this);
     this.addBackLastMarker = this.addBackLastMarker.bind(this);
-    this.clearMarkers = this.clearMarkers.bind(this);
+
     this.state = {
       polyline: null,
       path: null,
@@ -35,6 +35,7 @@ class RouteMap extends React.Component{
       coordinates: null,
     }
   }
+
   initMap() {
     const mapOptions = {
       center: { lat: 37.773972, lng: -122.431297 },
@@ -60,7 +61,7 @@ class RouteMap extends React.Component{
       });
 
       this.markers.push(newMarker)
-      this.redo = [];
+
       if (this.markers.length > 1) {
         this.calcRoute()
       } else {
@@ -109,11 +110,10 @@ class RouteMap extends React.Component{
     }
 
     this.directionsServiceOjb.route(request, (response, status) => {
-      window.response = response
+
       if (status == 'OK') {
         this.directionsResultRenderer.setDirections(response),
         this.updateRouteState(response.routes[0])
-        returned = response;
         //response returns and array of Google DirectionsResult objects
       }
     });
@@ -143,12 +143,6 @@ class RouteMap extends React.Component{
       let lastMarker = this.markers[this.markers.length - 1]
       this.map.setZoom(15)
       this.map.setCenter(lastMarker.getPosition())
-    }
-  }
-
-  clearMarkers(){
-    for (let i = 0; i < this.markers.length; i++) {
-      this.marker[i].setMap(null);
     }
   }
 
@@ -216,7 +210,7 @@ class RouteMap extends React.Component{
             closeForm={this.addForm}/>
         </div>
     }
-    window.state = this.state;
+
     return (
       <React.Fragment>
         <main className="map-workspace">
