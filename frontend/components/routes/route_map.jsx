@@ -160,7 +160,7 @@ class RouteMap extends React.Component{
       this.markers =[]
       this.centerMap()
       this.directionsResultRenderer = new google.maps.DirectionsRenderer({
-        draggable: true
+        draggable: false
       });
       this.directionsResultRenderer.setMap(this.map)
       this.polyline = null

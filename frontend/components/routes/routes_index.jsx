@@ -21,7 +21,6 @@ class RouteIndex extends React.Component{
         )
     )
 
-    window.props = this.props
     return(
       <main className="route-main">
 
